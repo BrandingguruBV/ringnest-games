@@ -1,12 +1,13 @@
-# Ringnest
+# Ringnest website (ringnest.games)
 
-Studio website for [ringnest.games](https://ringnest.games). Roblox-style nest, orbiting orbs, and a catalog of every Ringnest game.
+Public studio site for **Ringnest**. Roblox-style nest, orbiting orbs, and a catalog of every Ringnest game.
 
 Right now the live title is **Pet Orbits**, with a **Play on Roblox** button. Filters (status, genre, search) already work so the next game is a data entry, not a redesign.
 
 ## Run locally
 
 ```bash
+cd web
 npm install
 npm run dev
 ```
@@ -35,4 +36,4 @@ Until that is set, the button uses the universe start link.
 
 ## Deploy
 
-This is a Next.js app. Vercel project **ringnest-games** deploys from this repo root. Attach the domain **ringnest.games** in the Vercel project settings when DNS is ready.
+This folder is a Next.js app. Point the host (Vercel or similar) at `web/` as the project root, then attach **ringnest.games**.
