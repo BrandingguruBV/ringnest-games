@@ -9,8 +9,9 @@ const storeArt = join(webRoot, "..", "store-art");
 /** Decode checked-in base64 so Vercel/GitHub always get real JPEGs, not tiny stubs. */
 const b64Copies = [
   ["brand-banner.jpg.b64", "public/brand/banner.jpg"],
-  ["brand-icon.jpg.b64", "public/brand/icon.jpg"],
-  ["brand-logo.jpg.b64", "public/brand/logo.jpg"],
+  // brand-mark, brand-icon, and brand-logo share identical JPEG bytes.
+  ["brand-mark.jpg.b64", "public/brand/icon.jpg"],
+  ["brand-mark.jpg.b64", "public/brand/logo.jpg"],
   ["brand-mark.jpg.b64", "public/brand/mark.jpg"],
   ["pet-orbits-icon.jpg.b64", "public/games/pet-orbits-icon.jpg"],
   ["pet-orbits-mark.jpg.b64", "public/games/pet-orbits-mark.jpg"],
