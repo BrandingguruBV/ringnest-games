@@ -1,1 +1,7 @@
-$file:/tmp/rn_code_parts/23.content
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+
+export default config;
