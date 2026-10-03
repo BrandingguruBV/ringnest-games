@@ -20,6 +20,7 @@ for (const [from, to] of copies) {
   const dest = join(webRoot, to);
   if (!existsSync(src)) continue;
   const b64 = readFileSync(src, "utf8").trim();
+  if (b64.length < 200) continue;
   mkdirSync(dirname(dest), { recursive: true });
   writeFileSync(dest, Buffer.from(b64, "base64"));
 }
