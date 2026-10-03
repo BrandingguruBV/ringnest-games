@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fredoka, Nunito } from "next/font/google";
+import { MobileAppShell } from "@/components/mobile-app-shell";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { WorldBackdrop } from "@/components/world-backdrop";
@@ -25,10 +26,20 @@ export const metadata: Metadata = {
     template: "%s | Ringnest",
   },
   description: site.description,
+  applicationName: "Ringnest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Ringnest",
+  },
+  formatDetection: {
+    telephone: false,
+  },
   icons: {
     icon: "/brand/mark.jpg",
     apple: "/brand/icon.jpg",
   },
+  manifest: "/manifest.webmanifest",
   openGraph: {
     title: "Ringnest",
     description: site.description,
@@ -39,17 +50,27 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#050814",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  viewportFit: "cover",
+  colorScheme: "dark",
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
       className={`dark ${heading.variable} ${sans.variable} h-full antialiased`}
     >
-      <body className="relative min-h-full flex flex-col font-sans text-foreground">
+      <body className="app-shell relative min-h-full flex flex-col font-sans text-foreground">
         <WorldBackdrop />
         <SiteHeader />
-        <main className="relative flex-1">{children}</main>
+        <main className="relative flex-1 pb-24 md:pb-0">{children}</main>
         <SiteFooter />
+        <MobileAppShell />
       </body>
     </html>
   );
