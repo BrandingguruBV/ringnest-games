@@ -1,7 +1,1 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
-};
-
-export default nextConfig;
+$file:/tmp/rn_code_parts/00.content
