@@ -1,4 +1,4 @@
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -18,6 +18,7 @@ const copies = [
 for (const [from, to] of copies) {
   const src = join(artDir, from);
   const dest = join(webRoot, to);
+  if (!existsSync(src)) continue;
   const b64 = readFileSync(src, "utf8").trim();
   mkdirSync(dirname(dest), { recursive: true });
   writeFileSync(dest, Buffer.from(b64, "base64"));
