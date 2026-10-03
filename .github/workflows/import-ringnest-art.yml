@@ -1,0 +1,43 @@
+name: import-ringnest-art
+on:
+  push:
+    paths:
+      - "scripts/_import/**"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: import-ringnest-art
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Import large art when all chunks present
+        run: |
+          set -euo pipefail
+          N=$(cat scripts/_import/n_chunks | tr -d '[:space:]')
+          COUNT=$(ls scripts/_import/part_*.txt 2>/dev/null | wc -l | tr -d ' ')
+          echo "chunks=$COUNT expected=$N"
+          if [ "$COUNT" != "$N" ]; then
+            echo "Waiting for all chunks; nothing to do."
+            exit 0
+          fi
+          cd scripts/_import
+          cat $(ls part_*.txt | sort) > payload.b64
+          base64 -d payload.b64 > payload.tar.gz
+          EXPECT=$(python3 -c "import json; print(json.load(open('meta.json'))['tarball_sha256'])")
+          ACTUAL=$(sha256sum payload.tar.gz | awk '{print $1}')
+          echo "expect=$EXPECT actual=$ACTUAL"
+          test "$EXPECT" = "$ACTUAL"
+          cd ../..
+          tar -xzf scripts/_import/payload.tar.gz
+          rm -rf scripts/_import
+          rm -f .github/workflows/import-ringnest-art.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status
+          git commit -m "Import large Ringnest art assets via Actions."
+          git push
