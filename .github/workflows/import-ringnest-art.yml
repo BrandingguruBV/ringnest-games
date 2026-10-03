@@ -2,7 +2,8 @@ name: import-ringnest-art
 on:
   push:
     paths:
-      - "scripts/_import/**"
+      - ".github/workflows/import-ringnest-art.yml"
+      - "scripts/_import/READY"
   workflow_dispatch:
 permissions:
   contents: write
@@ -14,30 +15,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Import large art when all chunks present
+      - name: Download payload and restore files
         run: |
           set -euo pipefail
-          N=$(cat scripts/_import/n_chunks | tr -d '[:space:]')
-          COUNT=$(ls scripts/_import/part_*.txt 2>/dev/null | wc -l | tr -d ' ')
-          echo "chunks=$COUNT expected=$N"
-          if [ "$COUNT" != "$N" ]; then
-            echo "Waiting for all chunks; nothing to do."
-            exit 0
-          fi
-          cd scripts/_import
-          cat $(ls part_*.txt | sort) > payload.b64
-          base64 -d payload.b64 > payload.tar.gz
-          EXPECT=$(python3 -c "import json; print(json.load(open('meta.json'))['tarball_sha256'])")
-          ACTUAL=$(sha256sum payload.tar.gz | awk '{print $1}')
+          URL="https://litter.catbox.moe/sqrer7.gz"
+          EXPECT="b1df91a76e40743f4698bdeb700d600a4637423a3b2baada3f4757682bc735de"
+          curl -fsSL -o /tmp/rn_payload.tar.gz "$URL"
+          ACTUAL=$(sha256sum /tmp/rn_payload.tar.gz | awk '{print $1}')
           echo "expect=$EXPECT actual=$ACTUAL"
           test "$EXPECT" = "$ACTUAL"
-          cd ../..
-          tar -xzf scripts/_import/payload.tar.gz
+          tar -xzf /tmp/rn_payload.tar.gz
           rm -rf scripts/_import
           rm -f .github/workflows/import-ringnest-art.yml
+          rm -f .ringnest-push-ping .ringnest-mcp-test
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git status
-          git commit -m "Import large Ringnest art assets via Actions."
+          git commit -m "Restore Ringnest code and art assets via Actions import."
           git push
