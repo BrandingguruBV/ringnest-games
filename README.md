@@ -7,7 +7,6 @@ Pet Orbits is a **Private** Ringnest group experience. Roblox shows a 404 on Pri
 ## Run locally
 
 ```bash
-cd web
 npm install
 npm run dev
 ```
@@ -22,12 +21,8 @@ Edit `lib/games.ts`. Add a thumbnail under `public/games/`. Set `publicJoin: tru
 
 Place id `85407099788309`. Universe id `10769197443`.
 
-```bash
-NEXT_PUBLIC_PET_ORBITS_PLACE_ID=85407099788309
-```
-
 When Roblox is Public, set `publicJoin: true` on Pet Orbits in `lib/games.ts`.
 
 ## Deploy
 
-This folder is a Next.js app. Point the host at `web/` (or the Ringnest site repo root), then attach **ringnest.games**.
+This repo is the Next.js app for **ringnest.games**.
