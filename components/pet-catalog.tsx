@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { defaultPetFilters, filterPets } from "@/lib/filter-pets";
@@ -24,11 +25,21 @@ export function PetCatalog() {
         Catalog
       </p>
       <h1 className="font-heading mt-1 text-4xl font-extrabold text-white sm:text-6xl">
-        156 named pets
+        {pets.length} named pets
       </h1>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
         Every pet you can hatch in Pet Orbits. Search by name, rarity, or biome. Coin
         numbers are what that pet earns in your pens each second.
+      </p>
+      <p className="mt-4 max-w-2xl text-sm text-white/65">
+        Want the crash loop, 12 nests, Nest Club, 12 passes, and 14 packs first?{" "}
+        <Link
+          href="/games/pet-orbits"
+          className="font-bold text-cyan-200 underline-offset-4 hover:text-white hover:underline"
+        >
+          Open the Pet Orbits landing
+        </Link>
+        .
       </p>
 
       <div className="mt-8 flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-4 backdrop-blur-md sm:p-5">

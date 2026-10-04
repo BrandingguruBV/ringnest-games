@@ -64,7 +64,7 @@ export default function GamesPage() {
                 href={`/games/${featured.slug}`}
                 className="text-sm font-bold text-white underline-offset-4 hover:underline"
               >
-                How to play
+                Inside the game
               </Link>
             </div>
           </div>
@@ -74,7 +74,11 @@ export default function GamesPage() {
       <NestClubBand className="mt-12 px-0 py-0 sm:px-0 sm:py-0" />
 
       <section className="mt-12">
-        <h3 className="font-heading text-2xl font-extrabold text-white">How to play Pet Orbits</h3>
+        <h3 className="font-heading text-2xl font-extrabold text-white">Inside Pet Orbits</h3>
+        <p className="mt-2 max-w-2xl text-sm text-white/65">
+          Crash, hatch, 12 biomes, 162 pets, Nest Club, 12 passes, and 14 packs. Read the
+          full landing before you join.
+        </p>
         <ul className="mt-5 grid gap-3 sm:grid-cols-2">
           {featured.highlights.map((item) => (
             <li
@@ -85,6 +89,12 @@ export default function GamesPage() {
             </li>
           ))}
         </ul>
+        <Link
+          href="/games/pet-orbits"
+          className="mt-6 inline-flex h-12 items-center rounded-2xl bg-white/10 px-5 text-sm font-extrabold text-white ring-1 ring-white/15 hover:bg-white/16"
+        >
+          Open the Pet Orbits landing
+        </Link>
       </section>
 
       {rest.length > 0 ? (
