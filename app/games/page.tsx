@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { NestClubBand } from "@/components/nest-club";
 import { PlayOnRoblox } from "@/components/play-on-roblox";
 import { Badge } from "@/components/ui/badge";
 import { GameCard } from "@/components/game-card";
+import { KeyArtHero } from "@/components/key-art-hero";
 import { STATUS_LABELS, featuredGame, games } from "@/lib/games";
 import type { Metadata } from "next";
 
@@ -32,45 +32,37 @@ export default function GamesPage() {
         .
       </p>
 
-      <article className="mt-10 overflow-hidden rounded-[2rem] ring-1 ring-white/15">
-        <div className="relative aspect-[16/9] min-h-[220px]">
-          <Image
-            src={featured.thumbnail}
-            alt={`${featured.title} artwork`}
-            fill
-            priority
-            unoptimized
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div className="media-scrim absolute inset-0" />
-          <div className="media-copy absolute inset-x-0 bottom-0 p-5 sm:p-8">
-            <Badge
-              className={
-                joinable
-                  ? "h-7 rounded-full border-0 bg-[#00e38c] text-sm font-bold text-[#052013]"
-                  : "h-7 rounded-full border-0 bg-amber-300 text-sm font-bold text-[#3a2200]"
-              }
+      <article className="mt-10">
+        <KeyArtHero
+          src={featured.thumbnail}
+          alt={`${featured.title} artwork`}
+          priority
+        >
+          <Badge
+            className={
+              joinable
+                ? "h-7 rounded-full border-0 bg-[#00e38c] text-sm font-bold text-[#052013]"
+                : "h-7 rounded-full border-0 bg-amber-300 text-sm font-bold text-[#3a2200]"
+            }
+          >
+            {STATUS_LABELS[featured.status]}
+          </Badge>
+          <h2 className="font-heading mt-3 text-[2.2rem] leading-none font-extrabold text-white sm:text-5xl">
+            {featured.title}
+          </h2>
+          <p className="mt-2 max-w-xl text-base font-semibold leading-snug text-white/94">
+            {featured.tagline}
+          </p>
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <PlayOnRoblox href={featured.playUrl} className="w-full sm:w-auto" />
+            <Link
+              href={`/games/${featured.slug}`}
+              className="inline-flex h-12 items-center justify-center text-base font-bold text-white underline-offset-4 hover:underline sm:h-auto"
             >
-              {STATUS_LABELS[featured.status]}
-            </Badge>
-            <h2 className="font-heading mt-3 text-4xl font-extrabold text-white sm:text-5xl">
-              {featured.title}
-            </h2>
-            <p className="mt-2 max-w-xl text-base font-semibold leading-relaxed text-white">
-              {featured.tagline}
-            </p>
-            <div className="mt-5 flex flex-wrap items-center gap-3">
-              <PlayOnRoblox href={featured.playUrl} />
-              <Link
-                href={`/games/${featured.slug}`}
-                className="text-base font-bold text-white underline-offset-4 hover:underline"
-              >
-                Inside the game
-              </Link>
-            </div>
+              Inside the game
+            </Link>
           </div>
-        </div>
+        </KeyArtHero>
       </article>
 
       <NestClubBand className="mt-12 px-0 py-0 pb-[calc(2.5rem+env(safe-area-inset-bottom,0px))] sm:px-0 sm:py-0 sm:pb-0" />
