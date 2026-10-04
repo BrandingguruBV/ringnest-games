@@ -6,7 +6,7 @@ export default function NotFound() {
       <p className="text-xs font-extrabold tracking-[0.28em] text-cyan-300 uppercase">404</p>
       <h1 className="font-heading mt-3 text-4xl font-extrabold text-white">That world is missing</h1>
       <p className="mt-3 text-white/65">
-        This page is not in the nest. Head back to the games grid.
+        This page is not in the nest. Head back to Games or the pet Catalog.
       </p>
       <Link
         href="/games"

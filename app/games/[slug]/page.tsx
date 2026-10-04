@@ -34,7 +34,7 @@ export default async function GamePage({ params }: PageProps) {
   const game = getGameBySlug(slug);
   if (!game) notFound();
 
-  const live = game.status === "live";
+  const joinable = game.publicJoin;
 
   return (
     <article className="relative mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-16">
@@ -65,9 +65,11 @@ export default async function GamePage({ params }: PageProps) {
           <div className="flex flex-wrap gap-2">
             <Badge
               className={
-                live
+                joinable
                   ? "h-6 rounded-full border-0 bg-[#00e38c] font-bold text-[#052013]"
-                  : "h-6 rounded-full border-0 bg-white/15 font-bold text-white"
+                  : game.status === "private"
+                    ? "h-6 rounded-full border-0 bg-amber-300 font-bold text-[#3a2200]"
+                    : "h-6 rounded-full border-0 bg-white/15 font-bold text-white"
               }
             >
               {STATUS_LABELS[game.status]}
@@ -90,7 +92,7 @@ export default async function GamePage({ params }: PageProps) {
             {game.description}
           </p>
           <div className="mt-8">
-            <PlayOnRoblox href={game.playUrl} />
+            <PlayOnRoblox href={game.playUrl} publicJoin={game.publicJoin} />
           </div>
           <ul className="mt-10 grid gap-3 sm:grid-cols-2">
             {game.highlights.map((item) => (
@@ -125,6 +127,7 @@ export default async function GamePage({ params }: PageProps) {
               alt=""
               width={640}
               height={640}
+              unoptimized
               className="h-auto w-full"
             />
           </div>

@@ -1,8 +1,8 @@
 # Ringnest website (ringnest.games)
 
-Public studio site for **Ringnest**. Roblox-style nest, orbiting orbs, and a catalog of every Ringnest game.
+Public studio site for **Ringnest**. Worlds on Games. 156 Pet Orbits pets on Catalog. Studio story on About.
 
-Right now the live title is **Pet Orbits**, with a **Play on Roblox** button. Filters (status, genre, search) already work so the next game is a data entry, not a redesign.
+Pet Orbits is a **Private** Ringnest group experience. Roblox shows a 404 on Private games. The Play button explains that until the owner sets it Public.
 
 ## Run locally
 
@@ -16,24 +16,18 @@ Open [http://127.0.0.1:45221](http://127.0.0.1:45221).
 
 ## Add a game later
 
-Edit `lib/games.ts`. Add a thumbnail under `public/games/`. Live games need a `playUrl`. Coming soon games stay in the grid and filter as **Coming soon**.
+Edit `lib/games.ts`. Add a thumbnail under `public/games/`. Set `publicJoin: true` only when the Roblox experience is Public.
 
 ## Play on Roblox URL
 
-Pet Orbits universe id is `10769197443`. If you have the public place id, set it when deploying:
+Place id `85407099788309`. Universe id `10769197443`.
 
 ```bash
-NEXT_PUBLIC_PET_ORBITS_PLACE_ID=yourPlaceId
+NEXT_PUBLIC_PET_ORBITS_PLACE_ID=85407099788309
 ```
 
-Or set the full join link:
-
-```bash
-NEXT_PUBLIC_PET_ORBITS_PLAY_URL=https://www.roblox.com/games/PLACE_ID/Pet-Orbits
-```
-
-Until that is set, the button uses the universe start link.
+When Roblox is Public, set `publicJoin: true` on Pet Orbits in `lib/games.ts`.
 
 ## Deploy
 
-This folder is a Next.js app. Point the host (Vercel or similar) at `web/` as the project root, then attach **ringnest.games**.
+This folder is a Next.js app. Point the host at `web/` (or the Ringnest site repo root), then attach **ringnest.games**.
