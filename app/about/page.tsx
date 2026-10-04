@@ -20,7 +20,7 @@ export default function AboutPage() {
         <h2 className="font-heading text-2xl font-extrabold text-white">What we make</h2>
         <p className="mt-3 leading-relaxed text-white/70">
           Worlds you join on Roblox. First is Pet Orbits: one pet orbits you, you crash
-          orbs to grow mass, hatch 156 named pets into pens, and run 12 biome nests.
+          orbs to grow mass, hatch 162 named pets into pens, and run 12 biome nests.
           More Ringnest games will join Pet Orbits here.
         </p>
       </section>
@@ -49,7 +49,11 @@ export default function AboutPage() {
           <Link href="/catalog" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
             Catalog
           </Link>
-          . New Ringnest games land on{" "}
+          . Optional{" "}
+          <Link href="/#nest-club" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
+            Nest Club
+          </Link>{" "}
+          is 199 Robux a month for extra coins, nest grace, and a Lucky Egg. New Ringnest games land on{" "}
           <Link href="/games" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
             Games
           </Link>{" "}

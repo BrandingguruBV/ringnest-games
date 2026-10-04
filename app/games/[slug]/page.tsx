@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
+import { NestClubBand } from "@/components/nest-club";
 import { PlayOnRoblox } from "@/components/play-on-roblox";
 import { GENRE_LABELS, STATUS_LABELS, games, getGameBySlug } from "@/lib/games";
 import type { Metadata } from "next";
@@ -133,6 +134,9 @@ export default async function GamePage({ params }: PageProps) {
           </div>
         </aside>
       </div>
+      {game.slug === "pet-orbits" ? (
+        <NestClubBand className="mt-12 px-0 py-0 sm:px-0 sm:py-0" />
+      ) : null}
     </article>
   );
 }

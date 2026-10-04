@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { NestClubBand } from "@/components/nest-club";
 import { PlayOnRoblox } from "@/components/play-on-roblox";
 import { Badge } from "@/components/ui/badge";
 import { GameCard } from "@/components/game-card";
@@ -9,7 +10,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Games",
   description:
-    "Play Ringnest games on Roblox. Pet Orbits is live. Browse the Catalog for 156 pets.",
+    "Play Ringnest games on Roblox. Pet Orbits is live. Browse the Catalog for 162 pets.",
 };
 
 export default function GamesPage() {
@@ -69,6 +70,8 @@ export default function GamesPage() {
           </div>
         </div>
       </article>
+
+      <NestClubBand className="mt-12 px-0 py-0 sm:px-0 sm:py-0" />
 
       <section className="mt-12">
         <h3 className="font-heading text-2xl font-extrabold text-white">How to play Pet Orbits</h3>
