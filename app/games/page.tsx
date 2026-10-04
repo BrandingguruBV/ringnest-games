@@ -21,10 +21,10 @@ export default function GamesPage() {
     <div className="relative mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-16">
       <p className="text-xs font-extrabold tracking-[0.28em] text-cyan-300 uppercase">Games</p>
       <h1 className="font-heading mt-1 text-4xl font-extrabold text-white sm:text-6xl">
-        Play Ringnest worlds
+        Play on Roblox
       </h1>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
-        Jump into a Ringnest game on Roblox. Meet the pets in the{" "}
+        Pet Orbits is live. Meet every pet in the{" "}
         <Link href="/catalog" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
           Catalog
         </Link>
@@ -63,7 +63,7 @@ export default function GamesPage() {
                 href={`/games/${featured.slug}`}
                 className="text-sm font-bold text-white underline-offset-4 hover:underline"
               >
-                How it plays
+                How to play
               </Link>
             </div>
           </div>
@@ -71,7 +71,7 @@ export default function GamesPage() {
       </article>
 
       <section className="mt-12">
-        <h3 className="font-heading text-2xl font-extrabold text-white">How Pet Orbits plays</h3>
+        <h3 className="font-heading text-2xl font-extrabold text-white">How to play Pet Orbits</h3>
         <ul className="mt-5 grid gap-3 sm:grid-cols-2">
           {featured.highlights.map((item) => (
             <li
@@ -87,7 +87,7 @@ export default function GamesPage() {
       {rest.length > 0 ? (
         <section className="mt-14">
           <h3 className="font-heading text-2xl font-extrabold text-white">Coming soon</h3>
-          <p className="mt-2 text-sm text-white/65">New Ringnest worlds will land here.</p>
+          <p className="mt-2 text-sm text-white/65">New Ringnest games land here.</p>
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             {rest.map((game) => (
               <GameCard key={game.slug} game={game} />

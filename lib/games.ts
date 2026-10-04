@@ -76,11 +76,11 @@ export const games: Game[] = [
   },
   {
     slug: "next-world",
-    title: "Next world",
-    shortTitle: "Next world",
+    title: "New adventure",
+    shortTitle: "New adventure",
     tagline: "A new Ringnest adventure is on the way.",
     description:
-      "Pet Orbits is live. The next Ringnest world will appear here with its own look, pets, and Play on Roblox button. Same studio. New rules.",
+      "A new Ringnest game is on the way. It will have its own look, pets, and Play on Roblox button.",
     status: "coming-soon",
     publicJoin: false,
     genres: ["adventure"],

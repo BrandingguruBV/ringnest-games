@@ -94,7 +94,7 @@ export function GameCard({ game }: { game: Game }) {
               href={`/games/${game.slug}`}
               className="text-sm font-bold text-cyan-200 underline-offset-4 hover:text-white hover:underline"
             >
-              View world
+              See the game
             </Link>
           </div>
         </CardContent>

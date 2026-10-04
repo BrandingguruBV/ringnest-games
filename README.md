@@ -1,6 +1,6 @@
 # Ringnest website (ringnest.games)
 
-Public studio site for **Ringnest**. Play Pet Orbits from Games. Browse 156 pets on Catalog. Studio story on About.
+Public studio site for **Ringnest**. Play Pet Orbits from Games. Browse 156 pets on Catalog. About the studio on About.
 
 ## Run locally
 

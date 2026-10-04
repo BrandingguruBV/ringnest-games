@@ -5,9 +5,9 @@ import { GameCard } from "@/components/game-card";
 import { games } from "@/lib/games";
 
 export function WorldsGrid({
-  heading = "Worlds in the nest",
+  heading = "Play now",
   kicker = "Games",
-  intro = "Play Pet Orbits, then meet every pet in the Catalog.",
+  intro = "Pet Orbits is live on Roblox. Meet every pet in the Catalog.",
 }: {
   heading?: string;
   kicker?: string;
@@ -29,7 +29,7 @@ export function WorldsGrid({
           href="/games"
           className="text-sm font-bold text-cyan-200 underline-offset-4 hover:text-white hover:underline"
         >
-          Full games page
+          See all games
         </Link>
       </div>
       <div className="mt-8 grid gap-6 sm:grid-cols-2">

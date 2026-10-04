@@ -107,7 +107,7 @@ export default async function GamePage({ params }: PageProps) {
         </div>
         <aside className="h-fit rounded-[1.6rem] border border-white/10 bg-white/5 p-6 backdrop-blur-md">
           <p className="text-xs font-extrabold tracking-[0.22em] text-white/45 uppercase">
-            Snapshot
+            At a glance
           </p>
           <dl className="mt-4 grid grid-cols-3 gap-3">
             {game.stats.map((stat) => (

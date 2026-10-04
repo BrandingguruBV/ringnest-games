@@ -12,5 +12,5 @@ export const site = {
   companyUrl: "https://branding-guru.com",
   groupName: "Ringnest",
   // Bump this when art or favicon changes so browsers fetch a new file.
-  assetVersion: "20261004g",
+  assetVersion: "20261004h",
 };

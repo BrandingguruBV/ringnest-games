@@ -44,7 +44,7 @@ export function FeaturedGame({ game }: { game: Game }) {
                 href={`/games/${game.slug}`}
                 className="inline-flex h-14 items-center rounded-2xl px-5 text-base font-extrabold text-white/90 underline-offset-4 hover:underline"
               >
-                World details
+                How to play
               </Link>
             </div>
           </div>
