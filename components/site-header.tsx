@@ -31,7 +31,7 @@ export function SiteHeader() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-[#050814]/70 pt-[env(safe-area-inset-top)] backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-[#050814]/88 pt-[env(safe-area-inset-top)] backdrop-blur-xl">
       <div className="mx-auto flex h-14 max-w-6xl items-center gap-3 px-4 sm:h-[4.25rem] sm:gap-4 sm:px-6">
         <Link href="/" className="flex shrink-0 items-center gap-2.5">
           <Image
@@ -55,8 +55,8 @@ export function SiteHeader() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "rounded-full px-3 py-1.5 text-sm font-semibold text-white/70 transition hover:bg-white/10 hover:text-white",
-                  active && "bg-white/10 text-white",
+                  "rounded-full px-3 py-1.5 text-base font-semibold text-white/92 transition hover:bg-white/10 hover:text-white",
+                  active && "bg-white/12 text-white",
                 )}
               >
                 {link.label}

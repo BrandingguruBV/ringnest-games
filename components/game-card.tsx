@@ -56,10 +56,10 @@ export function GameCard({ game }: { game: Game }) {
             )}
             sizes="(max-width: 768px) 100vw, 50vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050814] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050814] via-[#050814]/35 to-transparent" />
           <Badge
             className={cn(
-              "absolute top-3 left-3 h-6 rounded-full border-0 px-2.5 font-bold",
+              "absolute top-3 left-3 h-7 rounded-full border-0 px-2.5 text-sm font-bold",
               game.status === "live"
                 ? "bg-[#00e38c] text-[#052013]"
                 : game.status === "private"
@@ -70,14 +70,14 @@ export function GameCard({ game }: { game: Game }) {
             {STATUS_LABELS[game.status]}
           </Badge>
         </Link>
-        <CardContent className="flex flex-1 flex-col gap-4 p-5">
+        <CardContent className="flex flex-1 flex-col gap-4 bg-[#0b1428]/92 p-5">
           <div>
             <div className="flex flex-wrap gap-1.5">
               {game.genres.map((genre) => (
                 <Badge
                   key={genre}
                   variant="outline"
-                  className="h-5 rounded-full border-white/20 bg-white/5 text-[10px] font-semibold uppercase tracking-wider text-cyan-100"
+                  className="h-6 rounded-full border-white/25 bg-[#0b1428] text-xs font-semibold tracking-wide text-cyan-100 uppercase"
                 >
                   {GENRE_LABELS[genre]}
                 </Badge>
@@ -86,13 +86,13 @@ export function GameCard({ game }: { game: Game }) {
             <h3 className="font-heading mt-2 text-2xl font-extrabold text-white drop-shadow">
               {game.title}
             </h3>
-            <p className="mt-1 text-sm leading-relaxed text-white/70">{game.tagline}</p>
+            <p className="mt-1 text-base leading-relaxed text-white/92">{game.tagline}</p>
           </div>
           <div className="mt-auto flex flex-wrap items-center gap-3">
             <PlayOnRoblox href={game.playUrl} size="md" />
             <Link
               href={`/games/${game.slug}`}
-              className="text-sm font-bold text-cyan-200 underline-offset-4 hover:text-white hover:underline"
+              className="text-base font-bold text-cyan-200 underline-offset-4 hover:text-white hover:underline"
             >
               Inside the game
             </Link>
