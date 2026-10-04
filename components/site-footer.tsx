@@ -19,7 +19,7 @@ export function SiteFooter() {
             <p className="font-heading text-sm font-extrabold tracking-[0.2em] text-white">
               RINGNEST
             </p>
-            <p className="text-xs text-white/55">
+            <p className="text-xs text-white/94">
               <a
                 href={site.companyUrl}
                 target="_blank"
@@ -31,7 +31,7 @@ export function SiteFooter() {
             </p>
           </div>
         </div>
-        <div className="flex flex-wrap gap-4 text-sm font-semibold text-white/70">
+        <div className="flex flex-wrap gap-4 text-sm font-semibold text-white/90">
           <Link href="/games" className="hover:text-white">
             Games
           </Link>

@@ -4,29 +4,29 @@ import { site } from "@/lib/site";
 export function AboutBand() {
   return (
     <section id="about" className="relative mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-      <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-md sm:p-12">
-        <p className="text-xs font-extrabold tracking-[0.28em] text-lime-300 uppercase">About</p>
+      <div className="rounded-[2rem] border border-white/10 bg-[#0b1428]/82 p-8 backdrop-blur-md sm:p-12">
+        <p className="text-[13px] font-extrabold tracking-[0.2em] text-lime-300 uppercase">About</p>
         <h2 className="font-heading mt-2 text-3xl font-extrabold text-white sm:text-5xl">
           Games from Ringnest
         </h2>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg">
+        <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/90 sm:text-lg">
           {site.about}
         </p>
         <dl className="mt-8 grid gap-4 sm:grid-cols-3">
-          <div className="rounded-2xl bg-[#050814]/50 p-4">
-            <dt className="text-[11px] font-extrabold tracking-[0.2em] text-white/45 uppercase">
+          <div className="rounded-2xl bg-[#0b1428]/88 p-4">
+            <dt className="text-[13px] font-extrabold tracking-[0.2em] text-white/88 uppercase">
               Studio
             </dt>
             <dd className="mt-1 font-heading text-xl font-extrabold text-white">Ringnest</dd>
           </div>
-          <div className="rounded-2xl bg-[#050814]/50 p-4">
-            <dt className="text-[11px] font-extrabold tracking-[0.2em] text-white/45 uppercase">
+          <div className="rounded-2xl bg-[#0b1428]/88 p-4">
+            <dt className="text-[13px] font-extrabold tracking-[0.2em] text-white/88 uppercase">
               Company
             </dt>
             <dd className="mt-1 font-heading text-xl font-extrabold text-white">{site.company}</dd>
           </div>
-          <div className="rounded-2xl bg-[#050814]/50 p-4">
-            <dt className="text-[11px] font-extrabold tracking-[0.2em] text-white/45 uppercase">
+          <div className="rounded-2xl bg-[#0b1428]/88 p-4">
+            <dt className="text-[13px] font-extrabold tracking-[0.2em] text-white/88 uppercase">
               First game
             </dt>
             <dd className="mt-1 font-heading text-xl font-extrabold text-white">Pet Orbits</dd>

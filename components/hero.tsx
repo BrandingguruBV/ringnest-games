@@ -8,8 +8,8 @@ export function Hero() {
 
   return (
     <section className="relative mx-auto flex min-h-[calc(100svh-4rem)] w-full max-w-6xl flex-col justify-end px-4 pb-10 pt-[max(1.5rem,env(safe-area-inset-top))] sm:justify-center sm:px-6 sm:py-16 md:min-h-[calc(100svh-4.25rem)]">
-      <div className="max-w-3xl">
-        <p className="inline-flex items-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-300/10 px-3 py-1 text-[11px] font-extrabold tracking-[0.22em] text-cyan-200 uppercase">
+      <div className="media-copy max-w-3xl rounded-[1.75rem] bg-[#050814]/55 p-4 ring-1 ring-white/10 backdrop-blur-md sm:bg-transparent sm:p-0 sm:ring-0 sm:backdrop-blur-none">
+        <p className="inline-flex items-center gap-2 rounded-full border border-cyan-300/50 bg-cyan-300/15 px-3 py-1.5 text-[13px] font-extrabold tracking-[0.18em] text-cyan-100 uppercase">
           <span className="size-1.5 rounded-full bg-[#00e38c] shadow-[0_0_12px_#00e38c]" />
           Live on Roblox
         </p>
@@ -19,7 +19,7 @@ export function Hero() {
         <p className="font-heading mt-3 max-w-xl text-xl font-bold text-amber-200 sm:mt-4 sm:text-3xl">
           {site.tagline}
         </p>
-        <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/75 sm:mt-5 sm:text-lg">
+        <p className="mt-3 max-w-xl text-base font-semibold leading-relaxed text-white sm:mt-5 sm:text-lg">
           Play Pet Orbits on phone and PC. Crash orbits, hatch 162 pets, and run 12
           biome nests.
         </p>

@@ -18,26 +18,28 @@ export function FeaturedGame({ game }: { game: Game }) {
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050814] via-[#050814]/35 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 p-5 sm:p-8 md:p-10">
+          <div className="media-scrim absolute inset-0" />
+          <div className="media-copy absolute inset-x-0 bottom-0 p-5 sm:p-8 md:p-10">
             <div className="flex flex-wrap items-center gap-2">
               <Badge
                 className={
                   game.status === "coming-soon"
-                    ? "h-6 rounded-full border-0 bg-white/15 px-2.5 font-bold text-white"
-                    : "h-6 rounded-full border-0 bg-[#00e38c] px-2.5 font-bold text-[#052013]"
+                    ? "h-7 rounded-full border-0 bg-white/20 px-2.5 text-sm font-bold text-white"
+                    : "h-7 rounded-full border-0 bg-[#00e38c] px-2.5 text-sm font-bold text-[#052013]"
                 }
               >
                 {game.status === "coming-soon" ? "Coming soon" : "Live now"}
               </Badge>
-              <Badge className="h-6 rounded-full border-0 bg-white/15 px-2.5 font-bold text-white">
+              <Badge className="h-7 rounded-full border-0 bg-white/20 px-2.5 text-sm font-bold text-white">
                 A Ringnest game
               </Badge>
             </div>
             <h2 className="font-heading mt-3 text-4xl font-extrabold text-white sm:text-6xl">
               {game.title}
             </h2>
-            <p className="mt-2 max-w-xl text-sm text-white/80 sm:text-lg">{game.tagline}</p>
+            <p className="mt-2 max-w-xl text-base font-semibold leading-relaxed text-white sm:text-lg">
+              {game.tagline}
+            </p>
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <PlayOnRoblox href={game.playUrl} />
               <Link
