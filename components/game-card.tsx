@@ -29,7 +29,7 @@ export function GameCard({ game }: { game: Game }) {
     node.style.setProperty("--tilt-y", "0deg");
   };
 
-  const live = game.status === "live";
+  const playable = game.status === "live" || game.status === "private";
 
   return (
     <div
@@ -41,7 +41,7 @@ export function GameCard({ game }: { game: Game }) {
       <Card
         className={cn(
           "h-full gap-0 overflow-hidden rounded-3xl border-0 bg-white/8 py-0 ring-1 ring-white/15 backdrop-blur-md",
-          live && "shadow-[0_20px_60px_rgba(34,211,238,0.18)]",
+          playable && "shadow-[0_20px_60px_rgba(34,211,238,0.18)]",
         )}
       >
         <Link href={`/games/${game.slug}`} className="relative block aspect-[16/10] overflow-hidden">
@@ -52,7 +52,7 @@ export function GameCard({ game }: { game: Game }) {
             unoptimized
             className={cn(
               "object-cover transition duration-500",
-              live ? "group-hover:scale-105" : "opacity-70 saturate-50",
+              playable ? "group-hover:scale-105" : "opacity-70 saturate-50",
             )}
             sizes="(max-width: 768px) 100vw, 50vw"
           />
@@ -60,7 +60,11 @@ export function GameCard({ game }: { game: Game }) {
           <Badge
             className={cn(
               "absolute top-3 left-3 h-6 rounded-full border-0 px-2.5 font-bold",
-              live ? "bg-[#00e38c] text-[#052013]" : "bg-white/20 text-white",
+              game.status === "live"
+                ? "bg-[#00e38c] text-[#052013]"
+                : game.status === "private"
+                  ? "bg-amber-300 text-[#3a2200]"
+                  : "bg-white/20 text-white",
             )}
           >
             {STATUS_LABELS[game.status]}
@@ -85,7 +89,7 @@ export function GameCard({ game }: { game: Game }) {
             <p className="mt-1 text-sm leading-relaxed text-white/70">{game.tagline}</p>
           </div>
           <div className="mt-auto flex flex-wrap items-center gap-3">
-            <PlayOnRoblox href={game.playUrl} size="md" />
+            <PlayOnRoblox href={game.playUrl} publicJoin={game.publicJoin} size="md" />
             <Link
               href={`/games/${game.slug}`}
               className="text-sm font-bold text-cyan-200 underline-offset-4 hover:text-white hover:underline"

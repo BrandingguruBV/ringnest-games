@@ -8,9 +8,9 @@ import { featuredGame } from "@/lib/games";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { href: "/#games", label: "Games" },
-  { href: "/games", label: "Catalog" },
-  { href: "/#studio", label: "Studio" },
+  { href: "/games", label: "Games", match: (p: string) => p === "/games" || p.startsWith("/games/") },
+  { href: "/catalog", label: "Catalog", match: (p: string) => p.startsWith("/catalog") },
+  { href: "/about", label: "About", match: (p: string) => p.startsWith("/about") },
 ];
 
 export function SiteHeader() {
@@ -36,8 +36,7 @@ export function SiteHeader() {
         </Link>
         <nav className="ml-1 hidden items-center gap-1 md:flex">
           {links.map((link) => {
-            const active =
-              link.href === "/games" ? pathname.startsWith("/games") : false;
+            const active = link.match(pathname);
             return (
               <Link
                 key={link.href}
@@ -53,7 +52,12 @@ export function SiteHeader() {
           })}
         </nav>
         <div className="ml-auto hidden sm:block">
-          <PlayOnRoblox href={featured.playUrl} size="md" label="Play" />
+          <PlayOnRoblox
+            href={featured.playUrl}
+            publicJoin={featured.publicJoin}
+            size="md"
+            label="Play"
+          />
         </div>
       </div>
     </header>

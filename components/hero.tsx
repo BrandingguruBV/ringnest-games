@@ -23,9 +23,13 @@ export function Hero() {
           Worlds that feel huge on the first join. Right now that world is Pet Orbits.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center">
-          <PlayOnRoblox href={featured.playUrl} className="w-full sm:w-auto" />
+          <PlayOnRoblox
+            href={featured.playUrl}
+            publicJoin={featured.publicJoin}
+            className="w-full sm:w-auto"
+          />
           <Link
-            href="#games"
+            href="/games"
             className="inline-flex h-12 items-center justify-center rounded-2xl border border-white/20 bg-white/8 px-6 text-base font-extrabold text-white backdrop-blur hover:bg-white/14 sm:h-14"
           >
             Browse games

@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { featuredGame } from "@/lib/games";
 import { cn } from "@/lib/utils";
+import { PlayOnRoblox } from "@/components/play-on-roblox";
 
 const tabs = [
   { href: "/", label: "Home", icon: HomeIcon, match: (p: string) => p === "/" },
@@ -13,6 +13,12 @@ const tabs = [
     label: "Games",
     icon: GamesIcon,
     match: (p: string) => p.startsWith("/games"),
+  },
+  {
+    href: "/catalog",
+    label: "Catalog",
+    icon: CatalogIcon,
+    match: (p: string) => p.startsWith("/catalog"),
   },
 ];
 
@@ -27,7 +33,7 @@ export function MobileAppShell() {
         className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-[#050814]/92 px-2 pb-[max(0.45rem,env(safe-area-inset-bottom))] pt-1.5 backdrop-blur-xl md:hidden"
         aria-label="App navigation"
       >
-        <div className="mx-auto grid max-w-lg grid-cols-3 items-end gap-1">
+        <div className="mx-auto grid max-w-lg grid-cols-4 items-end gap-1">
           {tabs.map((tab) => {
             const active = tab.match(pathname);
             const Icon = tab.icon;
@@ -52,24 +58,18 @@ export function MobileAppShell() {
               </Link>
             );
           })}
-          <a
-            href={featured.playUrl ?? "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center gap-0.5 rounded-2xl px-2 py-2 text-[11px] font-extrabold tracking-wide text-[#052013]"
-          >
-            <span className="play-cta flex size-11 -translate-y-1 items-center justify-center rounded-2xl shadow-[0_8px_0_#0a7a3e]">
-              <Image
-                src="/games/pet-orbits-mark.jpg"
-                alt=""
-                width={28}
-                height={28}
-                className="size-7 rounded-full ring-2 ring-white/70"
-                unoptimized
-              />
+          <div className="flex flex-col items-center">
+            <PlayOnRoblox
+              href={featured.playUrl}
+              publicJoin={featured.publicJoin}
+              size="md"
+              label=""
+              className="size-11 rounded-2xl px-0 shadow-[0_8px_0_#0a7a3e]"
+            />
+            <span className="mt-0.5 text-[11px] font-extrabold tracking-wide text-[#00e38c]">
+              Play
             </span>
-            <span className="text-[#00e38c]">Play</span>
-          </a>
+          </div>
         </div>
       </nav>
     </>
@@ -100,6 +100,17 @@ function GamesIcon({ className }: { className?: string }) {
         strokeWidth="1.8"
         strokeLinecap="round"
       />
+    </svg>
+  );
+}
+
+function CatalogIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <rect x="4" y="5" width="7" height="7" rx="1.6" stroke="currentColor" strokeWidth="1.8" />
+      <rect x="13" y="5" width="7" height="7" rx="1.6" stroke="currentColor" strokeWidth="1.8" />
+      <rect x="4" y="14" width="7" height="7" rx="1.6" stroke="currentColor" strokeWidth="1.8" />
+      <rect x="13" y="14" width="7" height="7" rx="1.6" stroke="currentColor" strokeWidth="1.8" />
     </svg>
   );
 }

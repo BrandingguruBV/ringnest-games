@@ -32,23 +32,18 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="flex flex-wrap gap-4 text-sm font-semibold text-white/70">
-          <Link href="/#games" className="hover:text-white">
+          <Link href="/games" className="hover:text-white">
             Games
           </Link>
-          <Link href="/games" className="hover:text-white">
+          <Link href="/catalog" className="hover:text-white">
             Catalog
+          </Link>
+          <Link href="/about" className="hover:text-white">
+            About
           </Link>
           <Link href="/games/pet-orbits" className="hover:text-white">
             Pet Orbits
           </Link>
-          <a
-            href="https://www.roblox.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-white"
-          >
-            Roblox
-          </a>
         </div>
       </div>
     </footer>
