@@ -26,10 +26,8 @@ export function SiteFooter() {
                 rel="noopener noreferrer"
                 className="underline-offset-2 hover:text-white hover:underline"
               >
-                Branding Guru
+                {site.companyLegal}
               </a>
-              {" / "}
-              {site.companyLegal}
             </p>
           </div>
         </div>
@@ -43,14 +41,6 @@ export function SiteFooter() {
           <Link href="/games/pet-orbits" className="hover:text-white">
             Pet Orbits
           </Link>
-          <a
-            href={site.companyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-white"
-          >
-            Branding Guru
-          </a>
           <a
             href="https://www.roblox.com"
             target="_blank"

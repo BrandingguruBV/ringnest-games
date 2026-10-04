@@ -9,18 +9,17 @@ export function StudioBand() {
           Built in the nest
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg">
-          Ringnest is the game studio behind Pet Orbits. Legal company{" "}
+          Ringnest is the game studio behind Pet Orbits.{" "}
           <a
             href={site.companyUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="font-bold text-cyan-200 underline-offset-4 hover:text-white hover:underline"
           >
-            Branding Guru
-          </a>{" "}
-          ({site.companyLegal}). Group on Roblox: {site.groupName}. More worlds
-          will share this site, this catalog, and the same Play on Roblox
-          button.
+            {site.companyLegal}
+          </a>
+          . Group on Roblox: {site.groupName}. More worlds will share this
+          site, this catalog, and the same Play on Roblox button.
         </p>
       </div>
     </section>
