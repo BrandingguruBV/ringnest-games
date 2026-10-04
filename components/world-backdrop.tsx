@@ -349,8 +349,8 @@ export function WorldBackdrop() {
         <span className="orb orb-lime absolute top-[48%] left-[18%] size-12 animate-drift opacity-70 sm:size-16" />
         <span className="orb orb-gold absolute top-[36%] right-[22%] size-10 animate-drift-delayed opacity-65 sm:hidden" />
       </div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,transparent_0%,rgba(5,8,20,0.28)_70%,rgba(5,8,20,0.7)_100%)]" />
-      <div className="scanlines absolute inset-0 opacity-15 mix-blend-overlay" />
+      <div className="readability-veil absolute inset-0" />
+      <div className="scanlines absolute inset-0 opacity-[0.07] mix-blend-overlay" />
     </div>
   );
 }
