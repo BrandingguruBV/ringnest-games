@@ -35,7 +35,6 @@ import {
   BIOME_ORDER,
   RARITY_COLORS,
   RARITY_ORDER,
-  type PetBiome,
   type PetRarity,
   pets,
 } from "@/lib/pets";
@@ -88,12 +87,13 @@ export function PetOrbitsLanding({
   thumbnail: string;
 }) {
   const rarityCounts = countBy((pet) => pet.rarity, RARITY_ORDER);
+  const skipBiomes = new Set(["Limited", "Prime"]);
   const biomeCounts = countBy(
     (pet) => pet.biome,
-    BIOME_ORDER.filter((biome) => biome !== "Limited" && biome !== "Prime") as PetBiome[],
+    BIOME_ORDER.filter((biome) => !skipBiomes.has(biome)),
   );
   const limited = pets.filter((pet) => pet.rarity === "Limited");
-  const apex = pets.filter((pet) => pet.rarity === "Apex");
+  const apex = pets.filter((pet) => String(pet.rarity) === "Apex");
   const passes = shopItems.filter((item) => item.kind === "Pass");
   const packs = shopItems.filter((item) => item.kind === "Pack");
 

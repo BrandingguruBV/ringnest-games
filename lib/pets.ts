@@ -1,4 +1,4 @@
-export type PetRarity = "Common" | "Uncommon" | "Rare" | "Epic" | "Legendary" | "Limited";
+export type PetRarity = "Common" | "Uncommon" | "Rare" | "Epic" | "Legendary" | "Limited" | "Apex";
 export type PetBiome =
 	| "Arena"
 	| "Meadow"
@@ -13,7 +13,8 @@ export type PetBiome =
 	| "Abyss"
 	| "Cosmic"
 	| "Celestial"
-	| "Limited";
+	| "Limited"
+	| "Prime";
 
 export type CatalogPet = {
 	id: string;
@@ -32,6 +33,7 @@ export const RARITY_ORDER: PetRarity[] = [
 	"Epic",
 	"Legendary",
 	"Limited",
+	"Apex",
 ];
 
 export const BIOME_ORDER: PetBiome[] = [
@@ -49,6 +51,7 @@ export const BIOME_ORDER: PetBiome[] = [
 	"Cosmic",
 	"Celestial",
 	"Limited",
+	"Prime",
 ];
 
 export const RARITY_COLORS: Record<PetRarity, string> = {
@@ -58,6 +61,7 @@ export const RARITY_COLORS: Record<PetRarity, string> = {
 	Epic: "#b450ff",
 	Legendary: "#ffc84a",
 	Limited: "#ff46dc",
+	Apex: "#ffe678",
 };
 
 export const pets: CatalogPet[] = [
@@ -217,8 +221,15 @@ export const pets: CatalogPet[] = [
 	{ id: "CrownOrbit", name: "Crown Orbit", rarity: "Limited", biome: "Limited", income: 250, color: "#ffd250", hint: "Weekly limited" },
 	{ id: "MythicNest", name: "Mythic Nest", rarity: "Limited", biome: "Limited", income: 230, color: "#78ffa0", hint: "Weekly limited" },
 	{ id: "EclipseWyrm", name: "Eclipse Wyrm", rarity: "Limited", biome: "Limited", income: 280, color: "#28143c", hint: "Weekly limited" },
+	{ id: "PrimeNest", name: "Prime Nest", rarity: "Apex", biome: "Prime", income: 320, color: "#ffdc50", hint: "Prime Egg only" },
+	{ id: "SolarCrown", name: "Solar Crown", rarity: "Apex", biome: "Prime", income: 340, color: "#ffb428", hint: "Prime Egg only" },
+	{ id: "VoidPrime", name: "Void Prime", rarity: "Apex", biome: "Prime", income: 360, color: "#5028a0", hint: "Prime Egg only" },
+	{ id: "StormApex", name: "Storm Apex", rarity: "Apex", biome: "Prime", income: 350, color: "#5aa0ff", hint: "Prime Egg only" },
+	{ id: "DawnPrime", name: "Dawn Prime", rarity: "Apex", biome: "Prime", income: 380, color: "#ffe68c", hint: "Prime Egg only" },
+	{ id: "OrbitSovereign", name: "Orbit Sovereign", rarity: "Apex", biome: "Prime", income: 400, color: "#ffd246", hint: "Prime Egg only" },
 ];
 
 export function petCount(): number {
 	return pets.length;
 }
+
