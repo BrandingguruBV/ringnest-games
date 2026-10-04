@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fredoka, Nunito } from "next/font/google";
 import { FreshLoad } from "@/components/fresh-load";
 import { MobileAppShell } from "@/components/mobile-app-shell";
+import { PlayDialogProvider } from "@/components/play-on-roblox";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { WorldBackdrop } from "@/components/world-backdrop";
@@ -80,12 +81,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`dark ${heading.variable} ${sans.variable} h-full antialiased`}
     >
       <body className="app-shell relative min-h-full flex flex-col font-sans text-foreground">
-        <FreshLoad />
-        <WorldBackdrop />
-        <SiteHeader />
-        <main className="relative flex-1 pb-24 md:pb-0">{children}</main>
-        <SiteFooter />
-        <MobileAppShell />
+        <PlayDialogProvider>
+          <FreshLoad />
+          <WorldBackdrop />
+          <SiteHeader />
+          <main className="relative flex-1 pb-24 md:pb-0">{children}</main>
+          <SiteFooter />
+          <MobileAppShell />
+        </PlayDialogProvider>
       </body>
     </html>
   );

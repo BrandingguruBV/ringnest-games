@@ -64,7 +64,7 @@ export function MobileAppShell() {
               publicJoin={featured.publicJoin}
               size="md"
               label=""
-              className="size-11 rounded-2xl px-0 shadow-[0_8px_0_#0a7a3e]"
+              className="relative z-[51] size-11 rounded-2xl px-0 shadow-[0_8px_0_#0a7a3e]"
             />
             <span className="mt-0.5 text-[11px] font-extrabold tracking-wide text-[#00e38c]">
               Play
