@@ -119,7 +119,7 @@ export function MobileAppShell() {
             <div className="mx-auto mb-4 h-1.5 w-12 rounded-full bg-white/20" />
             <div className="mb-4 flex items-start justify-between gap-3">
               <div>
-                <p className="text-[11px] font-extrabold tracking-[0.22em] text-cyan-300 uppercase">
+                <p className="text-[13px] font-extrabold tracking-[0.22em] text-cyan-300 uppercase">
                   Ringnest
                 </p>
                 <h2 id={titleId} className="font-heading text-2xl font-extrabold text-white">
@@ -129,7 +129,7 @@ export function MobileAppShell() {
               <button
                 type="button"
                 onClick={() => setMoreOpen(false)}
-                className="rounded-2xl bg-white/8 px-3 py-2 text-sm font-extrabold text-white/80 ring-1 ring-white/10"
+                className="rounded-2xl bg-white/8 px-3 py-2 text-sm font-extrabold text-white/94 ring-1 ring-white/10"
               >
                 Close
               </button>
@@ -147,18 +147,18 @@ export function MobileAppShell() {
                         "flex min-h-16 items-center justify-between gap-3 rounded-2xl px-4 py-3 ring-1 transition",
                         active
                           ? "bg-[#00e38c]/14 text-white ring-[#00e38c]/40"
-                          : "bg-white/5 text-white ring-white/10 active:bg-white/10",
+                          : "bg-[#0b1428]/82 text-white ring-white/10 active:bg-white/10",
                       )}
                     >
                       <span>
                         <span className="block text-base font-extrabold">{link.label}</span>
                         {link.hint ? (
-                          <span className="mt-0.5 block text-sm font-semibold text-white/55">
+                          <span className="mt-0.5 block text-sm font-semibold text-white/94">
                             {link.hint}
                           </span>
                         ) : null}
                       </span>
-                      <span className="text-lg font-extrabold text-white/35" aria-hidden>
+                      <span className="text-lg font-extrabold text-white/90" aria-hidden>
                         ›
                       </span>
                     </Link>
@@ -197,7 +197,7 @@ export function MobileAppShell() {
                     label=""
                     className="relative z-[71] size-11 rounded-2xl px-0 shadow-[0_8px_0_#0a7a3e]"
                   />
-                  <span className="mt-0.5 text-[11px] font-extrabold tracking-wide text-[#00e38c]">
+                  <span className="mt-0.5 text-[13px] font-extrabold tracking-wide text-[#00e38c]">
                     Play
                   </span>
                 </div>
@@ -213,14 +213,14 @@ export function MobileAppShell() {
                   aria-controls={dialogId}
                   onClick={() => setMoreOpen((open) => !open)}
                   className={cn(
-                    "flex flex-col items-center gap-0.5 rounded-2xl px-1 py-2 text-[11px] font-extrabold tracking-wide",
-                    active ? "text-[#00e38c]" : "text-white/55",
+                    "flex flex-col items-center gap-0.5 rounded-2xl px-1 py-2 text-[13px] font-extrabold tracking-wide",
+                    active ? "text-[#00e38c]" : "text-white/94",
                   )}
                 >
                   <span
                     className={cn(
                       "flex size-9 items-center justify-center rounded-2xl",
-                      active ? "bg-[#00e38c]/15 ring-1 ring-[#00e38c]/40" : "bg-white/5",
+                      active ? "bg-[#00e38c]/15 ring-1 ring-[#00e38c]/40" : "bg-[#0b1428]/82",
                     )}
                   >
                     {Icon ? <Icon className="size-5" /> : null}
@@ -236,14 +236,14 @@ export function MobileAppShell() {
                 href={tab.href!}
                 onClick={() => setMoreOpen(false)}
                 className={cn(
-                  "flex flex-col items-center gap-0.5 rounded-2xl px-1 py-2 text-[11px] font-extrabold tracking-wide",
-                  active ? "text-[#00e38c]" : "text-white/55",
+                  "flex flex-col items-center gap-0.5 rounded-2xl px-1 py-2 text-[13px] font-extrabold tracking-wide",
+                  active ? "text-[#00e38c]" : "text-white/94",
                 )}
               >
                 <span
                   className={cn(
                     "flex size-9 items-center justify-center rounded-2xl",
-                    active ? "bg-[#00e38c]/15 ring-1 ring-[#00e38c]/40" : "bg-white/5",
+                    active ? "bg-[#00e38c]/15 ring-1 ring-[#00e38c]/40" : "bg-[#0b1428]/82",
                   )}
                 >
                   {Icon ? <Icon className="size-5" /> : null}
