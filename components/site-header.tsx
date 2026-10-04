@@ -6,43 +6,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { PlayOnRoblox } from "@/components/play-on-roblox";
 import { featuredGame } from "@/lib/games";
+import { desktopNav } from "@/lib/nav";
 import { cn } from "@/lib/utils";
-
-function isNestClubHash(hash: string) {
-  return hash === "#shop" || hash === "#nest-club";
-}
-
-const links: {
-  href: string;
-  label: string;
-  match: (pathname: string, hash: string) => boolean;
-}[] = [
-  {
-    href: "/games",
-    label: "Games",
-    match: (p, h) => p === "/games" && !isNestClubHash(h),
-  },
-  {
-    href: "/games/pet-orbits",
-    label: "Pet Orbits",
-    match: (p, h) => p.startsWith("/games/") && !isNestClubHash(h),
-  },
-  {
-    href: "/catalog",
-    label: "Catalog",
-    match: (p) => p.startsWith("/catalog"),
-  },
-  {
-    href: "/games/pet-orbits#shop",
-    label: "Nest Club",
-    match: (_p, h) => isNestClubHash(h),
-  },
-  {
-    href: "/about",
-    label: "About",
-    match: (p) => p.startsWith("/about"),
-  },
-];
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -83,7 +48,7 @@ export function SiteHeader() {
           </span>
         </Link>
         <nav className="ml-1 hidden items-center gap-1 md:flex">
-          {links.map((link) => {
+          {desktopNav.map((link) => {
             const active = link.match(pathname, hash);
             return (
               <Link
@@ -99,11 +64,12 @@ export function SiteHeader() {
             );
           })}
         </nav>
-        <div className="ml-auto hidden sm:block">
+        <div className="ml-auto hidden md:block">
           <PlayOnRoblox
             href={featured.playUrl}
             size="md"
             label="Play"
+            className="h-10 rounded-xl px-4 text-sm shadow-[0_6px_0_#0a7a3e] sm:h-11 sm:rounded-xl sm:px-5 sm:text-base sm:shadow-[0_10px_0_#0a7a3e,0_18px_40px_rgba(0,176,111,0.35)]"
           />
         </div>
       </div>
