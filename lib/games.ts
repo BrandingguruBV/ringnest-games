@@ -35,6 +35,7 @@ export const STATUS_LABELS: Record<GameStatus, string> = {
 export const PET_ORBITS_UNIVERSE_ID = 10769197443;
 export const PET_ORBITS_PLACE_ID = 85407099788309;
 export const PET_ORBITS_PLAY_URL = `https://www.roblox.com/games/${PET_ORBITS_PLACE_ID}/Pet-Orbits`;
+export const NEST_CLUB_ID = "EXP-152779782063522385";
 
 function petOrbitsPlayUrl(): string {
   const override = process.env.NEXT_PUBLIC_PET_ORBITS_PLAY_URL;
@@ -43,14 +44,35 @@ function petOrbitsPlayUrl(): string {
   return `https://www.roblox.com/games/${placeId}/Pet-Orbits`;
 }
 
+function nestClubSubscribeUrl(): string {
+  const override = process.env.NEXT_PUBLIC_NEST_CLUB_SUBSCRIBE_URL;
+  if (override) return override;
+  return `${petOrbitsPlayUrl()}#!/store`;
+}
+
+export const nestClub = {
+  id: NEST_CLUB_ID,
+  name: "Nest Club",
+  price: "199 Robux a month",
+  subscribeUrl: nestClubSubscribeUrl(),
+  headline: "Extra coins, extra nest grace, a Lucky Egg each month.",
+  body: "Nest Club is the Pet Orbits monthly. Subscribe on Roblox to keep the perks while you play. Cosmetics drop if you cancel. Fast Hatch and Extra Pens stay separate. The full game stays free.",
+  perks: [
+    "+25% coins while subscribed",
+    "+2 seconds HOME grace on nests",
+    "1 Lucky Egg each month",
+    "Nest Wake trail and Club title",
+  ],
+};
+
 export const games: Game[] = [
   {
     slug: "pet-orbits",
     title: "Pet Orbits",
     shortTitle: "Pet Orbits",
-    tagline: "Crash orbits. Hatch 156 pets. Run biome nests.",
+    tagline: "Crash orbits. Hatch 162 pets. Run 12 biome nests.",
     description:
-      "One pet orbits you. Leave the safe zone and bump orbs to grow. Hatch named pets into pens that pay coins. Claim a base. Sprint through 12 biome nests and get the egg home before the guardian catches you. Made by Ringnest for phone and PC.",
+      "One pet orbits you. Leave the safe zone and bump orbs to grow. Hatch 162 named pets into pens that pay coins. Claim a base. Sprint through 12 biome nests and get the egg home before the guardian catches you. 14-day seasons, weekly Limited pets, Nest Club, and a VIP shop. Playable free. Made by Ringnest for phone and PC.",
     status: "live",
     publicJoin: true,
     genres: ["adventure", "simulator"],
@@ -61,14 +83,14 @@ export const games: Game[] = [
     placeId: PET_ORBITS_PLACE_ID,
     highlights: [
       "Crash orbits to grow mass",
-      "156 named pets plus a weekly Limited egg",
+      "162 named pets, 6 weekly Limited, 6 Apex",
       "12 biome nests from Meadow to Celestial",
       "16 bases with coin-earning pens",
       "Hatch, shop, and trade in the safe zone",
-      "Seasons, crews, missions, and rebirth",
+      "14-day seasons, Nest Club, missions, crews",
     ],
     stats: [
-      { label: "Pets", value: "156" },
+      { label: "Pets", value: "162" },
       { label: "Biomes", value: "12" },
       { label: "Bases", value: "16" },
     ],

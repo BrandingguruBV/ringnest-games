@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 const links = [
   { href: "/games", label: "Games", match: (p: string) => p === "/games" || p.startsWith("/games/") },
   { href: "/catalog", label: "Catalog", match: (p: string) => p.startsWith("/catalog") },
+  { href: "/#nest-club", label: "Nest Club", match: (_p: string) => false },
   { href: "/about", label: "About", match: (p: string) => p.startsWith("/about") },
 ];
 
