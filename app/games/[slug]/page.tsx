@@ -74,7 +74,7 @@ export default async function GamePage({ params }: PageProps) {
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050814] via-[#050814]/20 to-transparent" />
+          <div className="media-scrim absolute inset-0 opacity-80" />
         </div>
       </div>
 
@@ -96,7 +96,7 @@ export default async function GamePage({ params }: PageProps) {
               <Badge
                 key={genre}
                 variant="outline"
-                className="h-6 rounded-full border-white/20 bg-white/5 font-semibold text-cyan-100"
+                className="h-6 rounded-full border-white/20 bg-[#0b1428]/82 font-semibold text-cyan-100"
               >
                 {GENRE_LABELS[genre]}
               </Badge>
@@ -106,7 +106,7 @@ export default async function GamePage({ params }: PageProps) {
             {game.title}
           </h1>
           <p className="mt-3 text-lg text-amber-200 sm:text-xl">{game.tagline}</p>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/75">
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/92">
             {game.description}
           </p>
           <div className="mt-8">
@@ -116,21 +116,21 @@ export default async function GamePage({ params }: PageProps) {
             {game.highlights.map((item) => (
               <li
                 key={item}
-                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white/85"
+                className="rounded-2xl border border-white/10 bg-[#0b1428]/82 px-4 py-3 text-sm font-semibold text-white/92"
               >
                 {item}
               </li>
             ))}
           </ul>
         </div>
-        <aside className="h-fit rounded-[1.6rem] border border-white/10 bg-white/5 p-6 backdrop-blur-md">
-          <p className="text-xs font-extrabold tracking-[0.22em] text-white/45 uppercase">
+        <aside className="h-fit rounded-[1.6rem] border border-white/10 bg-[#0b1428]/82 p-6 backdrop-blur-md">
+          <p className="text-[13px] font-extrabold tracking-[0.18em] text-white/88 uppercase">
             At a glance
           </p>
           <dl className="mt-4 grid grid-cols-3 gap-3">
             {game.stats.map((stat) => (
-              <div key={stat.label} className="rounded-2xl bg-[#050814]/60 p-3 text-center">
-                <dt className="text-[10px] font-bold tracking-wider text-white/50 uppercase">
+              <div key={stat.label} className="rounded-2xl bg-[#0b1428]/92 p-3 text-center">
+                <dt className="text-[13px] font-bold tracking-wide text-white/92 uppercase">
                   {stat.label}
                 </dt>
                 <dd className="font-heading mt-1 text-2xl font-extrabold text-white">
