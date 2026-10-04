@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { NestClubBand } from "@/components/nest-club";
+import { PetOrbitsHero } from "@/components/pet-orbits-hero";
 import { PlayOnRoblox } from "@/components/play-on-roblox";
 import {
   biomes,
@@ -106,68 +106,7 @@ export function PetOrbitsLanding({
         Back to games
       </Link>
 
-      <header className="mt-6 overflow-hidden rounded-[2rem] ring-1 ring-white/15">
-        <div className="relative aspect-[4/5] min-h-[320px] sm:aspect-[16/9] sm:min-h-[380px]">
-          <Image
-            src={thumbnail}
-            alt="Pet Orbits key art"
-            fill
-            priority
-            unoptimized
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div className="media-scrim absolute inset-0" />
-          <div className="media-copy absolute inset-x-0 bottom-0 p-5 sm:p-10">
-            <div className="flex flex-wrap gap-2">
-              <Badge className="h-7 rounded-full border-0 bg-[#00e38c] text-sm font-bold text-[#052013]">
-                Live on Roblox
-              </Badge>
-              <Badge className="h-7 rounded-full border-0 bg-white/20 text-sm font-bold text-white">
-                Phone and PC
-              </Badge>
-              <Badge className="h-7 rounded-full border-0 bg-white/20 text-sm font-bold text-white">
-                Playable free
-              </Badge>
-            </div>
-            <h1 className="font-heading mt-4 text-4xl font-extrabold text-white sm:text-7xl">
-              Pet Orbits
-            </h1>
-            <p className="mt-3 max-w-2xl text-lg font-bold text-amber-200 sm:text-2xl">
-              Crash orbits. Hatch 162 pets. Run 12 biome nests. Keep what you earn.
-            </p>
-            <p className="mt-3 max-w-2xl text-base font-semibold leading-relaxed text-white sm:text-lg">
-              You are a collector in a stadium world. One pet circles you as a crash
-              orb. Named pets you hatch sit in pens and pay coins. Twelve biomes
-              around the bowl hide nests. Steal the egg, bank HOME, hatch rarer,
-              crash bigger. Ringnest built it for phone and PC.
-            </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-              <PlayOnRoblox href={playUrl} className="w-full sm:w-auto" />
-              <Button
-                asChild
-                size="lg"
-                className="h-14 rounded-2xl border-0 bg-[#ffd84a] px-7 text-lg font-extrabold text-[#3a2200] shadow-[0_10px_0_#b8860b] hover:bg-[#ffe37a] hover:text-[#3a2200]"
-              >
-                <a
-                  href={nestClub.subscribeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Subscribe to Nest Club on Roblox"
-                >
-                  Subscribe Nest Club
-                </a>
-              </Button>
-              <a
-                href="#shop"
-                className="inline-flex h-14 items-center justify-center rounded-2xl px-5 text-base font-extrabold text-white/90 underline-offset-4 hover:underline"
-              >
-                See every pass and pack
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
+      <PetOrbitsHero playUrl={playUrl} thumbnail={thumbnail} />
 
       <nav
         aria-label="On this page"
