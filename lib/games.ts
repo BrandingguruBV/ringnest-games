@@ -1,4 +1,4 @@
-export type GameStatus = "live" | "coming-soon";
+export type GameStatus = "live" | "private" | "coming-soon";
 export type GameGenre = "adventure" | "simulator";
 
 export type Game = {
@@ -12,7 +12,10 @@ export type Game = {
   thumbnail: string;
   icon: string;
   playUrl: string | null;
+  publicJoin: boolean;
   universeId?: number;
+  placeId?: number;
+  dashboardUrl?: string;
   highlights: string[];
   stats: { label: string; value: string }[];
   accent: string;
@@ -24,20 +27,21 @@ export const GENRE_LABELS: Record<GameGenre, string> = {
 };
 
 export const STATUS_LABELS: Record<GameStatus, string> = {
-  live: "Live",
+  live: "Live on Roblox",
+  private: "Private on Roblox",
   "coming-soon": "Coming soon",
 };
 
 export const PET_ORBITS_UNIVERSE_ID = 10769197443;
+export const PET_ORBITS_PLACE_ID = 85407099788309;
+export const PET_ORBITS_PLAY_URL = `https://www.roblox.com/games/${PET_ORBITS_PLACE_ID}/Pet-Orbits`;
+export const PET_ORBITS_DASHBOARD = `https://create.roblox.com/dashboard/creations/experiences/${PET_ORBITS_UNIVERSE_ID}/overview`;
 
 function petOrbitsPlayUrl(): string {
   const override = process.env.NEXT_PUBLIC_PET_ORBITS_PLAY_URL;
   if (override) return override;
-  const placeId = process.env.NEXT_PUBLIC_PET_ORBITS_PLACE_ID;
-  if (placeId) {
-    return `https://www.roblox.com/games/${placeId}/Pet-Orbits`;
-  }
-  return `https://www.roblox.com/games/start?universeId=${PET_ORBITS_UNIVERSE_ID}`;
+  const placeId = process.env.NEXT_PUBLIC_PET_ORBITS_PLACE_ID ?? String(PET_ORBITS_PLACE_ID);
+  return `https://www.roblox.com/games/${placeId}/Pet-Orbits`;
 }
 
 export const games: Game[] = [
@@ -48,12 +52,15 @@ export const games: Game[] = [
     tagline: "Crash orbits. Hatch 156 pets. Run biome nests.",
     description:
       "One pet orbits you. Leave the SAFE ZONE and bump orbs to grow. Hatch named pets into pens that pay coins. Claim a base. Sprint through 12 biome nests and get the egg home before the guardian catches you. Made by Ringnest for phone and PC.",
-    status: "live",
+    status: "private",
+    publicJoin: false,
     genres: ["adventure", "simulator"],
     thumbnail: "/games/pet-orbits-thumb.jpg",
     icon: "/games/pet-orbits-icon.jpg",
     playUrl: petOrbitsPlayUrl(),
     universeId: PET_ORBITS_UNIVERSE_ID,
+    placeId: PET_ORBITS_PLACE_ID,
+    dashboardUrl: PET_ORBITS_DASHBOARD,
     highlights: [
       "Orbit crash combat: bump orbs to steal mass",
       "156 named pets plus a weekly Limited egg",
@@ -75,16 +82,17 @@ export const games: Game[] = [
     shortTitle: "Next world",
     tagline: "Another Ringnest world is forming in the nest.",
     description:
-      "Pet Orbits is live first. The next Ringnest game will land here with its own thumbnail, filters, and Play on Roblox button. Same studio. New rules.",
+      "Pet Orbits is the first Ringnest game. The next world will land here with its own thumbnail, catalog entries, and Play on Roblox button. Same studio. New rules.",
     status: "coming-soon",
+    publicJoin: false,
     genres: ["adventure"],
     thumbnail: "/brand/banner.jpg",
     icon: "/brand/mark.jpg",
     playUrl: null,
     highlights: [
       "Same Ringnest studio",
-      "Will appear in this grid",
-      "Filters will sort it the day it ships",
+      "Will appear on Games the day it ships",
+      "Pets and items will join the Catalog",
     ],
     stats: [
       { label: "Status", value: "Nesting" },
@@ -95,7 +103,7 @@ export const games: Game[] = [
 ];
 
 export function getLiveGames(): Game[] {
-  return games.filter((game) => game.status === "live");
+  return games.filter((game) => game.status === "live" || game.status === "private");
 }
 
 export function getGameBySlug(slug: string): Game | undefined {

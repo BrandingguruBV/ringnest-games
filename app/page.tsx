@@ -1,7 +1,7 @@
+import { AboutBand } from "@/components/about-band";
 import { FeaturedGame } from "@/components/featured-game";
-import { GamesCatalog } from "@/components/games-catalog";
 import { Hero } from "@/components/hero";
-import { StudioBand } from "@/components/studio-band";
+import { WorldsGrid } from "@/components/worlds-grid";
 import { featuredGame } from "@/lib/games";
 
 export default function HomePage() {
@@ -11,8 +11,8 @@ export default function HomePage() {
     <>
       <Hero />
       <FeaturedGame game={featured} />
-      <GamesCatalog />
-      <StudioBand />
+      <WorldsGrid />
+      <AboutBand />
     </>
   );
 }
