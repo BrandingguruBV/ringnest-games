@@ -9,4 +9,6 @@ export const site = {
   companyLegal: "Brandingguru BV, Netherlands",
   companyUrl: "https://branding-guru.com",
   groupName: "Ringnest by Branding Guru B.V.",
+  // Bump this when art or favicon changes so browsers fetch a new file.
+  assetVersion: "20261004c",
 };
