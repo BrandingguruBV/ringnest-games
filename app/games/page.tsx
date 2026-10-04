@@ -71,7 +71,7 @@ export default function GamesPage() {
         </div>
       </article>
 
-      <NestClubBand className="mt-12 px-0 py-0 sm:px-0 sm:py-0" />
+      <NestClubBand className="mt-12 px-0 py-0 pb-[calc(2.5rem+env(safe-area-inset-bottom,0px))] sm:px-0 sm:py-0 sm:pb-0" />
 
       <section className="mt-12">
         <h3 className="font-heading text-2xl font-extrabold text-white">Inside Pet Orbits</h3>

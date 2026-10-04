@@ -130,6 +130,12 @@
   }
 }
 
+html {
+  /* Keep #nest-club and other anchors clear of the fixed mobile tab bar. */
+  scroll-padding-bottom: calc(7.25rem + env(safe-area-inset-bottom, 0px));
+  scroll-padding-top: calc(4.5rem + env(safe-area-inset-top, 0px));
+}
+
 .app-shell {
   min-height: 100dvh;
   overscroll-behavior-y: none;
