@@ -20,7 +20,7 @@ export function Hero() {
           {site.tagline}
         </p>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/75 sm:mt-5 sm:text-lg">
-          Play Pet Orbits on phone and PC. Crash orbits, hatch 156 pets, and run 12
+          Play Pet Orbits on phone and PC. Crash orbits, hatch 162 pets, and run 12
           biome nests.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center">
@@ -29,10 +29,10 @@ export function Hero() {
               className="w-full sm:w-auto"
             />
           <Link
-            href="/games"
+            href="/games/pet-orbits"
             className="inline-flex h-12 items-center justify-center rounded-2xl border border-white/20 bg-white/8 px-6 text-base font-extrabold text-white backdrop-blur hover:bg-white/14 sm:h-14"
           >
-            Browse games
+            Inside Pet Orbits
           </Link>
         </div>
       </div>

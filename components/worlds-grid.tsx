@@ -7,7 +7,7 @@ import { games } from "@/lib/games";
 export function WorldsGrid({
   heading = "Play now",
   kicker = "Games",
-  intro = "Pet Orbits is live on Roblox. Meet every pet in the Catalog.",
+  intro = "Pet Orbits is live on Roblox. Read the full landing, then join.",
 }: {
   heading?: string;
   kicker?: string;
