@@ -36,7 +36,7 @@ export function PlayOnRoblox({
         disabled
         size="lg"
         className={cn(
-          "h-12 rounded-2xl border-0 bg-white/10 px-6 text-base font-bold text-white/70",
+          "h-12 rounded-2xl border-0 bg-white/10 px-6 text-base font-bold text-white/90",
           className,
         )}
       >

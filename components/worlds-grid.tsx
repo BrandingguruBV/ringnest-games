@@ -17,13 +17,13 @@ export function WorldsGrid({
     <section id="games" className="relative mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-xs font-extrabold tracking-[0.28em] text-cyan-300 uppercase">
+          <p className="text-[13px] font-extrabold tracking-[0.2em] text-cyan-300 uppercase">
             {kicker}
           </p>
           <h2 className="font-heading mt-1 text-3xl font-extrabold text-white sm:text-5xl">
             {heading}
           </h2>
-          <p className="mt-2 max-w-xl text-sm text-white/65 sm:text-base">{intro}</p>
+          <p className="mt-2 max-w-xl text-base text-white/88 sm:text-lg">{intro}</p>
         </div>
         <Link
           href="/games"
