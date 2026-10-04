@@ -68,7 +68,8 @@ export const viewport: Viewport = {
   themeColor: "#050814",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  /* Allow pinch-zoom so readers can enlarge text on any device. */
+  maximumScale: 5,
   viewportFit: "cover",
   colorScheme: "dark",
 };
