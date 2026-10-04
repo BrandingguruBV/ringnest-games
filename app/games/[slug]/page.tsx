@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
-import { NestClubBand } from "@/components/nest-club";
+import { PetOrbitsLanding } from "@/components/pet-orbits-landing";
 import { PlayOnRoblox } from "@/components/play-on-roblox";
 import { GENRE_LABELS, STATUS_LABELS, games, getGameBySlug } from "@/lib/games";
 import type { Metadata } from "next";
@@ -19,6 +19,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const game = getGameBySlug(slug);
   if (!game) return { title: "Game" };
+  if (slug === "pet-orbits") {
+    return {
+      title: "Pet Orbits",
+      description:
+        "Crash orbits, hatch 162 named pets, and run 12 biome nests in Pet Orbits. Nest Club, 12 passes, 14 packs. Playable free on Roblox. Phone and PC.",
+      openGraph: {
+        title: "Pet Orbits | Ringnest",
+        description:
+          "One pet orbits you. Pens pay coins. Twelve biomes hide nests. Read the full game, then Play on Roblox.",
+        images: [game.thumbnail],
+      },
+    };
+  }
   return {
     title: game.title,
     description: game.tagline,
@@ -34,6 +47,10 @@ export default async function GamePage({ params }: PageProps) {
   const { slug } = await params;
   const game = getGameBySlug(slug);
   if (!game) notFound();
+
+  if (game.slug === "pet-orbits") {
+    return <PetOrbitsLanding playUrl={game.playUrl} thumbnail={game.thumbnail} />;
+  }
 
   const joinable = game.publicJoin;
 
@@ -134,9 +151,6 @@ export default async function GamePage({ params }: PageProps) {
           </div>
         </aside>
       </div>
-      {game.slug === "pet-orbits" ? (
-        <NestClubBand className="mt-12 px-0 py-0 sm:px-0 sm:py-0" />
-      ) : null}
     </article>
   );
 }
