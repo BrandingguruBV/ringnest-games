@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useState, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { PlayOnRoblox } from "@/components/play-on-roblox";
 import { featuredGame } from "@/lib/games";
 import { isMobileMoreActive, isNestClubHash, mobileMoreLinks } from "@/lib/nav";
@@ -58,6 +58,8 @@ export function MobileAppShell() {
   const featured = featuredGame();
   const titleId = useId();
   const dialogId = useId();
+  const routeKey = `${pathname}${hash}`;
+  const prevRouteKey = useRef(routeKey);
 
   useEffect(() => {
     const sync = () => setHash(window.location.hash);
@@ -67,17 +69,34 @@ export function MobileAppShell() {
     sync();
     window.addEventListener("hashchange", sync);
     window.addEventListener("popstate", syncSoon);
-    document.addEventListener("click", syncSoon);
+    // Sync hash after in-page jumps (#shop), but never from the app nav itself
+    // or the More sheet toggle gets cancelled by the route-close effect.
+    const onDocClick = (event: MouseEvent) => {
+      const target = event.target;
+      if (!(target instanceof Element)) {
+        syncSoon();
+        return;
+      }
+      if (target.closest("[data-app-nav]")) {
+        return;
+      }
+      syncSoon();
+    };
+    document.addEventListener("click", onDocClick);
     return () => {
       window.removeEventListener("hashchange", sync);
       window.removeEventListener("popstate", syncSoon);
-      document.removeEventListener("click", syncSoon);
+      document.removeEventListener("click", onDocClick);
     };
   }, [pathname]);
 
   useEffect(() => {
+    if (prevRouteKey.current === routeKey) {
+      return;
+    }
+    prevRouteKey.current = routeKey;
     setMoreOpen(false);
-  }, [pathname, hash]);
+  }, [routeKey]);
 
   useEffect(() => {
     if (!moreOpen) {
@@ -102,11 +121,11 @@ export function MobileAppShell() {
       <div className="pointer-events-none fixed inset-x-0 top-0 z-50 h-[env(safe-area-inset-top)] bg-[#050814]/85 md:hidden" />
 
       {moreOpen ? (
-        <div className="fixed inset-0 z-[60] md:hidden">
+        <div className="fixed inset-0 z-[80] md:hidden" data-app-nav="sheet">
           <button
             type="button"
             aria-label="Close menu"
-            className="absolute inset-0 bg-black/65 supports-backdrop-filter:backdrop-blur-sm"
+            className="absolute inset-0 bg-black/70 supports-backdrop-filter:backdrop-blur-sm"
             onClick={() => setMoreOpen(false)}
           />
           <div
@@ -180,7 +199,8 @@ export function MobileAppShell() {
       ) : null}
 
       <nav
-        className="fixed inset-x-0 bottom-0 z-[70] border-t border-white/10 bg-[#050814]/94 px-1.5 pb-[max(0.45rem,env(safe-area-inset-bottom))] pt-1.5 backdrop-blur-xl md:hidden"
+        data-app-nav="bar"
+        className="fixed inset-x-0 bottom-0 z-[90] border-t border-white/10 bg-[#050814]/94 px-1.5 pb-[max(0.45rem,env(safe-area-inset-bottom))] pt-1.5 backdrop-blur-xl md:hidden"
         aria-label="App navigation"
       >
         <div className="mx-auto grid max-w-lg grid-cols-5 items-end gap-0.5">
@@ -195,7 +215,7 @@ export function MobileAppShell() {
                     href={featured.playUrl}
                     size="md"
                     label=""
-                    className="relative z-[71] size-11 rounded-2xl px-0 shadow-[0_8px_0_#0a7a3e]"
+                    className="relative z-[91] size-11 rounded-2xl px-0 shadow-[0_8px_0_#0a7a3e]"
                   />
                   <span className="mt-0.5 text-[13px] font-extrabold tracking-wide text-[#00e38c]">
                     Play
@@ -211,9 +231,13 @@ export function MobileAppShell() {
                   type="button"
                   aria-expanded={moreOpen}
                   aria-controls={dialogId}
-                  onClick={() => setMoreOpen((open) => !open)}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    setMoreOpen((open) => !open);
+                  }}
                   className={cn(
-                    "flex flex-col items-center gap-0.5 rounded-2xl px-1 py-2 text-[13px] font-extrabold tracking-wide",
+                    "flex min-h-12 w-full flex-col items-center gap-0.5 rounded-2xl px-1 py-2 text-[13px] font-extrabold tracking-wide",
                     active ? "text-[#00e38c]" : "text-white/94",
                   )}
                 >
@@ -236,7 +260,7 @@ export function MobileAppShell() {
                 href={tab.href!}
                 onClick={() => setMoreOpen(false)}
                 className={cn(
-                  "flex flex-col items-center gap-0.5 rounded-2xl px-1 py-2 text-[13px] font-extrabold tracking-wide",
+                  "flex min-h-12 w-full flex-col items-center gap-0.5 rounded-2xl px-1 py-2 text-[13px] font-extrabold tracking-wide",
                   active ? "text-[#00e38c]" : "text-white/94",
                 )}
               >
