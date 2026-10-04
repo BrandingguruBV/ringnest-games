@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { PlayOnRoblox } from "@/components/play-on-roblox";
 import { featuredGame, nestClub } from "@/lib/games";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 function ClubMark({ className }: { className?: string }) {
   return (
@@ -58,6 +59,12 @@ export function NestClubBand({ className }: { className?: string }) {
                 </a>
               </Button>
               <PlayOnRoblox href={featuredGame().playUrl} />
+              <Link
+                href="/games/pet-orbits#shop"
+                className="inline-flex h-14 items-center justify-center rounded-2xl px-5 text-base font-extrabold text-white/90 underline-offset-4 hover:underline"
+              >
+                Every pass and pack
+              </Link>
             </div>
           </div>
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">

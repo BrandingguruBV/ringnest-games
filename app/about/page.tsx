@@ -45,12 +45,16 @@ export default function AboutPage() {
       <section className="mt-10">
         <h2 className="font-heading text-2xl font-extrabold text-white">Play Pet Orbits</h2>
         <p className="mt-3 leading-relaxed text-white/70">
-          Open Pet Orbits on Roblox, or browse every hatchable pet in the{" "}
+          Open Pet Orbits on Roblox, read the{" "}
+          <Link href="/games/pet-orbits" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
+            full game landing
+          </Link>
+          , or browse every hatchable pet in the{" "}
           <Link href="/catalog" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
             Catalog
           </Link>
           . Optional{" "}
-          <Link href="/#nest-club" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
+          <Link href="/games/pet-orbits#shop" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
             Nest Club
           </Link>{" "}
           is 199 Robux a month for extra coins, nest grace, and a Lucky Egg. New Ringnest games land on{" "}
