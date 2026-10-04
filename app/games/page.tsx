@@ -20,11 +20,11 @@ export default function GamesPage() {
 
   return (
     <div className="relative mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-16">
-      <p className="text-xs font-extrabold tracking-[0.28em] text-cyan-300 uppercase">Games</p>
+      <p className="text-[13px] font-extrabold tracking-[0.2em] text-cyan-300 uppercase">Games</p>
       <h1 className="font-heading mt-1 text-4xl font-extrabold text-white sm:text-6xl">
         Play on Roblox
       </h1>
-      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
+      <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/90 sm:text-base">
         Pet Orbits is live. Meet every pet in the{" "}
         <Link href="/catalog" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
           Catalog
@@ -43,13 +43,13 @@ export default function GamesPage() {
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050814] via-[#050814]/40 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 p-5 sm:p-8">
+          <div className="media-scrim absolute inset-0" />
+          <div className="media-copy absolute inset-x-0 bottom-0 p-5 sm:p-8">
             <Badge
               className={
                 joinable
-                  ? "h-6 rounded-full border-0 bg-[#00e38c] font-bold text-[#052013]"
-                  : "h-6 rounded-full border-0 bg-amber-300 font-bold text-[#3a2200]"
+                  ? "h-7 rounded-full border-0 bg-[#00e38c] text-sm font-bold text-[#052013]"
+                  : "h-7 rounded-full border-0 bg-amber-300 text-sm font-bold text-[#3a2200]"
               }
             >
               {STATUS_LABELS[featured.status]}
@@ -57,12 +57,14 @@ export default function GamesPage() {
             <h2 className="font-heading mt-3 text-4xl font-extrabold text-white sm:text-5xl">
               {featured.title}
             </h2>
-            <p className="mt-2 max-w-xl text-white/80">{featured.tagline}</p>
+            <p className="mt-2 max-w-xl text-base font-semibold leading-relaxed text-white">
+              {featured.tagline}
+            </p>
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <PlayOnRoblox href={featured.playUrl} />
               <Link
                 href={`/games/${featured.slug}`}
-                className="text-sm font-bold text-white underline-offset-4 hover:underline"
+                className="text-base font-bold text-white underline-offset-4 hover:underline"
               >
                 Inside the game
               </Link>
@@ -75,7 +77,7 @@ export default function GamesPage() {
 
       <section className="mt-12">
         <h3 className="font-heading text-2xl font-extrabold text-white">Inside Pet Orbits</h3>
-        <p className="mt-2 max-w-2xl text-sm text-white/65">
+        <p className="mt-2 max-w-2xl text-base text-white/88">
           Crash, hatch, 12 biomes, 162 pets, Nest Club, 12 passes, and 14 packs. Read the
           full landing before you join.
         </p>
@@ -83,7 +85,7 @@ export default function GamesPage() {
           {featured.highlights.map((item) => (
             <li
               key={item}
-              className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white/85"
+              className="rounded-2xl border border-white/10 bg-[#0b1428]/82 px-4 py-3 text-sm font-semibold text-white/92"
             >
               {item}
             </li>
@@ -100,7 +102,7 @@ export default function GamesPage() {
       {rest.length > 0 ? (
         <section className="mt-14">
           <h3 className="font-heading text-2xl font-extrabold text-white">Coming soon</h3>
-          <p className="mt-2 text-sm text-white/65">New Ringnest games land here.</p>
+          <p className="mt-2 text-base text-white/88">New Ringnest games land here.</p>
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             {rest.map((game) => (
               <GameCard key={game.slug} game={game} />

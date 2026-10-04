@@ -27,7 +27,7 @@ export function NestClubBand({ className }: { className?: string }) {
       <div className="overflow-hidden rounded-[2rem] border border-lime-300/25 bg-[linear-gradient(160deg,rgba(0,227,140,0.16),rgba(5,8,20,0.92)_42%,rgba(255,216,74,0.12))] p-6 pb-8 shadow-[0_24px_70px_rgba(0,227,140,0.16)] sm:p-10">
         <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
           <div>
-            <p className="inline-flex items-center gap-2 rounded-full border border-lime-300/40 bg-lime-300/10 px-3 py-1 text-[11px] font-extrabold tracking-[0.22em] text-lime-200 uppercase">
+            <p className="inline-flex items-center gap-2 rounded-full border border-lime-300/40 bg-lime-300/10 px-3 py-1 text-[13px] font-extrabold tracking-[0.22em] text-lime-200 uppercase">
               <span className="size-1.5 rounded-full bg-[#00e38c] shadow-[0_0_12px_#00e38c]" />
               Monthly on Roblox
             </p>
@@ -37,10 +37,10 @@ export function NestClubBand({ className }: { className?: string }) {
             <p className="mt-2 text-lg font-extrabold text-amber-200 sm:text-xl">
               {nestClub.price}
             </p>
-            <p className="mt-3 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
+            <p className="mt-3 max-w-xl text-base font-semibold leading-relaxed text-white sm:text-lg">
               {nestClub.headline}
             </p>
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/65 sm:text-base">
+            <p className="mt-3 max-w-xl text-base leading-relaxed text-white/92 sm:text-lg">
               {nestClub.body}
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
@@ -72,7 +72,7 @@ export function NestClubBand({ className }: { className?: string }) {
               <li
                 key={perk}
                 className={cn(
-                  "flex items-start gap-3 rounded-2xl border border-white/10 bg-[#050814]/55 px-4 py-3 text-sm font-semibold text-white/90",
+                  "flex items-start gap-3 rounded-2xl border border-white/10 bg-[#0b1428]/95 px-4 py-3.5 text-base font-semibold text-white",
                   index === nestClub.perks.length - 1 && "mb-2 md:mb-0",
                 )}
               >
