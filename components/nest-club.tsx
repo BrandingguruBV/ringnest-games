@@ -20,11 +20,11 @@ export function NestClubBand({ className }: { className?: string }) {
     <section
       id="nest-club"
       className={cn(
-        "relative mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-16",
+        "relative mx-auto w-full max-w-6xl scroll-mt-[calc(4.5rem+env(safe-area-inset-top,0px))] px-4 py-10 pb-[calc(2.5rem+env(safe-area-inset-bottom,0px))] sm:px-6 sm:py-16 sm:pb-16",
         className,
       )}
     >
-      <div className="overflow-hidden rounded-[2rem] border border-lime-300/25 bg-[linear-gradient(160deg,rgba(0,227,140,0.16),rgba(5,8,20,0.92)_42%,rgba(255,216,74,0.12))] p-6 shadow-[0_24px_70px_rgba(0,227,140,0.16)] sm:p-10">
+      <div className="overflow-hidden rounded-[2rem] border border-lime-300/25 bg-[linear-gradient(160deg,rgba(0,227,140,0.16),rgba(5,8,20,0.92)_42%,rgba(255,216,74,0.12))] p-6 pb-8 shadow-[0_24px_70px_rgba(0,227,140,0.16)] sm:p-10">
         <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
           <div>
             <p className="inline-flex items-center gap-2 rounded-full border border-lime-300/40 bg-lime-300/10 px-3 py-1 text-[11px] font-extrabold tracking-[0.22em] text-lime-200 uppercase">
@@ -68,10 +68,13 @@ export function NestClubBand({ className }: { className?: string }) {
             </div>
           </div>
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-            {nestClub.perks.map((perk) => (
+            {nestClub.perks.map((perk, index) => (
               <li
                 key={perk}
-                className="flex items-start gap-3 rounded-2xl border border-white/10 bg-[#050814]/55 px-4 py-3 text-sm font-semibold text-white/90"
+                className={cn(
+                  "flex items-start gap-3 rounded-2xl border border-white/10 bg-[#050814]/55 px-4 py-3 text-sm font-semibold text-white/90",
+                  index === nestClub.perks.length - 1 && "mb-2 md:mb-0",
+                )}
               >
                 <ClubMark className="mt-0.5 size-8 shrink-0" />
                 <span>{perk}</span>

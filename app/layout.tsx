@@ -83,7 +83,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <FreshLoad />
         <WorldBackdrop />
         <SiteHeader />
-        <main className="relative flex-1 pb-24 md:pb-0">{children}</main>
+        <main className="relative flex-1 pb-[calc(7.25rem+env(safe-area-inset-bottom))] md:pb-0">
+          {children}
+        </main>
         <SiteFooter />
         <MobileAppShell />
       </body>
