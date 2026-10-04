@@ -3,21 +3,67 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { PlayOnRoblox } from "@/components/play-on-roblox";
 import { featuredGame } from "@/lib/games";
 import { cn } from "@/lib/utils";
 
-const links = [
-  { href: "/games", label: "Games", match: (p: string) => p === "/games" },
-  { href: "/games/pet-orbits", label: "Pet Orbits", match: (p: string) => p.startsWith("/games/") },
-  { href: "/catalog", label: "Catalog", match: (p: string) => p.startsWith("/catalog") },
-  { href: "/games/pet-orbits#shop", label: "Nest Club", match: () => false },
-  { href: "/about", label: "About", match: (p: string) => p.startsWith("/about") },
+function isNestClubHash(hash: string) {
+  return hash === "#shop" || hash === "#nest-club";
+}
+
+const links: {
+  href: string;
+  label: string;
+  match: (pathname: string, hash: string) => boolean;
+}[] = [
+  {
+    href: "/games",
+    label: "Games",
+    match: (p, h) => p === "/games" && !isNestClubHash(h),
+  },
+  {
+    href: "/games/pet-orbits",
+    label: "Pet Orbits",
+    match: (p, h) => p.startsWith("/games/") && !isNestClubHash(h),
+  },
+  {
+    href: "/catalog",
+    label: "Catalog",
+    match: (p) => p.startsWith("/catalog"),
+  },
+  {
+    href: "/games/pet-orbits#shop",
+    label: "Nest Club",
+    match: (_p, h) => isNestClubHash(h),
+  },
+  {
+    href: "/about",
+    label: "About",
+    match: (p) => p.startsWith("/about"),
+  },
 ];
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const [hash, setHash] = useState("");
   const featured = featuredGame();
+
+  useEffect(() => {
+    const sync = () => setHash(window.location.hash);
+    const syncSoon = () => {
+      window.requestAnimationFrame(sync);
+    };
+    sync();
+    window.addEventListener("hashchange", sync);
+    window.addEventListener("popstate", syncSoon);
+    document.addEventListener("click", syncSoon);
+    return () => {
+      window.removeEventListener("hashchange", sync);
+      window.removeEventListener("popstate", syncSoon);
+      document.removeEventListener("click", syncSoon);
+    };
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#050814]/70 pt-[env(safe-area-inset-top)] backdrop-blur-xl">
@@ -38,7 +84,7 @@ export function SiteHeader() {
         </Link>
         <nav className="ml-1 hidden items-center gap-1 md:flex">
           {links.map((link) => {
-            const active = link.match(pathname);
+            const active = link.match(pathname, hash);
             return (
               <Link
                 key={link.href}
