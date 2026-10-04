@@ -1,6 +1,6 @@
 # Ringnest website (ringnest.games)
 
-Public studio site for **Ringnest**. Play Pet Orbits from Games. Browse 156 pets on Catalog. About the studio on About.
+Public studio site for **Ringnest**. Play Pet Orbits from Games. The full Pet Orbits landing (`/games/pet-orbits`) covers why to play, 12 biomes, 162 pets, Nest Club, 12 passes, and 14 packs. Browse 162 pets on Catalog. About the studio on About.
 
 ## Run locally
 
