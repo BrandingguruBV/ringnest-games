@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Games",
   description:
-    "Ringnest games on Roblox. Pet Orbits is the first world. Catalog is the 156-pet Index, not this page.",
+    "Play Ringnest games on Roblox. Pet Orbits is live. Browse the Catalog for 156 pets.",
 };
 
 export default function GamesPage() {
@@ -24,7 +24,7 @@ export default function GamesPage() {
         Play Ringnest worlds
       </h1>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
-        This page is the lineup of Ringnest games. For named pets, eggs, and biomes, open{" "}
+        Jump into a Ringnest game on Roblox. Meet the pets in the{" "}
         <Link href="/catalog" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
           Catalog
         </Link>
@@ -58,7 +58,7 @@ export default function GamesPage() {
             </h2>
             <p className="mt-2 max-w-xl text-white/80">{featured.tagline}</p>
             <div className="mt-5 flex flex-wrap items-center gap-3">
-              <PlayOnRoblox href={featured.playUrl} publicJoin={featured.publicJoin} />
+              <PlayOnRoblox href={featured.playUrl} />
               <Link
                 href={`/games/${featured.slug}`}
                 className="text-sm font-bold text-white underline-offset-4 hover:underline"
@@ -86,8 +86,8 @@ export default function GamesPage() {
 
       {rest.length > 0 ? (
         <section className="mt-14">
-          <h3 className="font-heading text-2xl font-extrabold text-white">Still in the nest</h3>
-          <p className="mt-2 text-sm text-white/65">Not playable yet. They stay on this page so the studio list is honest.</p>
+          <h3 className="font-heading text-2xl font-extrabold text-white">Coming soon</h3>
+          <p className="mt-2 text-sm text-white/65">New Ringnest worlds will land here.</p>
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             {rest.map((game) => (
               <GameCard key={game.slug} game={game} />

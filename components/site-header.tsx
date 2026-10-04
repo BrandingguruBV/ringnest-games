@@ -54,7 +54,6 @@ export function SiteHeader() {
         <div className="ml-auto hidden sm:block">
           <PlayOnRoblox
             href={featured.playUrl}
-            publicJoin={featured.publicJoin}
             size="md"
             label="Play"
           />

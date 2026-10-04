@@ -23,12 +23,12 @@ export function FeaturedGame({ game }: { game: Game }) {
             <div className="flex flex-wrap items-center gap-2">
               <Badge
                 className={
-                  game.publicJoin
-                    ? "h-6 rounded-full border-0 bg-[#00e38c] px-2.5 font-bold text-[#052013]"
-                    : "h-6 rounded-full border-0 bg-amber-300 px-2.5 font-bold text-[#3a2200]"
+                  game.status === "coming-soon"
+                    ? "h-6 rounded-full border-0 bg-white/15 px-2.5 font-bold text-white"
+                    : "h-6 rounded-full border-0 bg-[#00e38c] px-2.5 font-bold text-[#052013]"
                 }
               >
-                {game.publicJoin ? "Live now" : "Private on Roblox"}
+                {game.status === "coming-soon" ? "Coming soon" : "Live now"}
               </Badge>
               <Badge className="h-6 rounded-full border-0 bg-white/15 px-2.5 font-bold text-white">
                 A Ringnest game
@@ -39,7 +39,7 @@ export function FeaturedGame({ game }: { game: Game }) {
             </h2>
             <p className="mt-2 max-w-xl text-sm text-white/80 sm:text-lg">{game.tagline}</p>
             <div className="mt-5 flex flex-wrap items-center gap-3">
-              <PlayOnRoblox href={game.playUrl} publicJoin={game.publicJoin} />
+              <PlayOnRoblox href={game.playUrl} />
               <Link
                 href={`/games/${game.slug}`}
                 className="inline-flex h-14 items-center rounded-2xl px-5 text-base font-extrabold text-white/90 underline-offset-4 hover:underline"

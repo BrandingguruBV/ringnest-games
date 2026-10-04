@@ -21,17 +21,16 @@ export default function AboutPage() {
         <p className="mt-3 leading-relaxed text-white/70">
           Worlds you join on Roblox. First is Pet Orbits: one pet orbits you, you crash
           orbs to grow mass, hatch 156 named pets into pens, and run 12 biome nests.
-          More Ringnest games will share this site, the same catalog style, and the same
-          Play on Roblox button once they are Public.
+          More Ringnest games will live here, with the same catalog and Play on Roblox
+          button.
         </p>
       </section>
 
       <section className="mt-10">
-        <h2 className="font-heading text-2xl font-extrabold text-white">Who owns it</h2>
+        <h2 className="font-heading text-2xl font-extrabold text-white">Who we are</h2>
         <p className="mt-3 leading-relaxed text-white/70">
-          The Roblox group is <span className="font-bold text-white">{site.groupName}</span>.
-          Players will see <span className="font-bold text-white">By Ringnest</span>. The
-          legal company is{" "}
+          Games are made by <span className="font-bold text-white">Ringnest</span>. The
+          company is{" "}
           <a
             href={site.companyUrl}
             target="_blank"
@@ -45,18 +44,17 @@ export default function AboutPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="font-heading text-2xl font-extrabold text-white">This website</h2>
+        <h2 className="font-heading text-2xl font-extrabold text-white">This site</h2>
         <p className="mt-3 leading-relaxed text-white/70">
           <Link href="/games" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
             Games
           </Link>{" "}
-          is the lineup of Ringnest worlds.{" "}
+          is every Ringnest world you can play.{" "}
           <Link href="/catalog" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
             Catalog
           </Link>{" "}
-          is the Pet Orbits Index: every named pet, rarity, and biome. Play on Roblox
-          opens the live group experience when it is Public. Until then, Roblox shows a
-          404 on Private games.
+          is the Pet Orbits pet collection: every named pet, rarity, and biome. Play on
+          Roblox opens Pet Orbits.
         </p>
       </section>
     </article>

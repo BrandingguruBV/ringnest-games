@@ -7,7 +7,7 @@ import { games } from "@/lib/games";
 export function WorldsGrid({
   heading = "Worlds in the nest",
   kicker = "Games",
-  intro = "Ringnest games you can open. Catalog is the 156 Pet Orbits pets, not this list.",
+  intro = "Play Pet Orbits, then meet every pet in the Catalog.",
 }: {
   heading?: string;
   kicker?: string;

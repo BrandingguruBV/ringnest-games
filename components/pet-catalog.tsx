@@ -27,8 +27,8 @@ export function PetCatalog() {
         156 named pets
       </h1>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
-        Every hatchable pet in Pet Orbits. This is the Index from the game, not the
-        Games list. Filter by rarity or biome. Coins listed are pen income per second.
+        Every pet you can hatch in Pet Orbits. Search by name, rarity, or biome. Coin
+        numbers are what that pet earns in your pens each second.
       </p>
 
       <div className="mt-8 flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-4 backdrop-blur-md sm:p-5">

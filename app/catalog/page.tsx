@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Catalog",
   description:
-    "The Pet Orbits catalog: 156 named pets across 12 biomes, plus weekly Limiteds. Not the Games list.",
+    "156 named pets from Pet Orbits. Search by rarity, biome, and name.",
 };
 
 export default function CatalogPage() {

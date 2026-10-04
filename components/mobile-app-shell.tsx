@@ -61,7 +61,6 @@ export function MobileAppShell() {
           <div className="flex flex-col items-center">
             <PlayOnRoblox
               href={featured.playUrl}
-              publicJoin={featured.publicJoin}
               size="md"
               label=""
               className="relative z-[51] size-11 rounded-2xl px-0 shadow-[0_8px_0_#0a7a3e]"

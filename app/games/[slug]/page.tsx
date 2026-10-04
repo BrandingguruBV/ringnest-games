@@ -92,7 +92,7 @@ export default async function GamePage({ params }: PageProps) {
             {game.description}
           </p>
           <div className="mt-8">
-            <PlayOnRoblox href={game.playUrl} publicJoin={game.publicJoin} />
+            <PlayOnRoblox href={game.playUrl} />
           </div>
           <ul className="mt-10 grid gap-3 sm:grid-cols-2">
             {game.highlights.map((item) => (

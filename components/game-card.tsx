@@ -89,7 +89,7 @@ export function GameCard({ game }: { game: Game }) {
             <p className="mt-1 text-sm leading-relaxed text-white/70">{game.tagline}</p>
           </div>
           <div className="mt-auto flex flex-wrap items-center gap-3">
-            <PlayOnRoblox href={game.playUrl} publicJoin={game.publicJoin} size="md" />
+            <PlayOnRoblox href={game.playUrl} size="md" />
             <Link
               href={`/games/${game.slug}`}
               className="text-sm font-bold text-cyan-200 underline-offset-4 hover:text-white hover:underline"
