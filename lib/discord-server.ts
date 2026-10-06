@@ -581,7 +581,7 @@ export const EMBEDS: Record<string, EmbedSpec> = {
       {
         name: "Still add Bloxlink",
         value:
-          "Discord cannot install third-party bots for us. Invite [Bloxlink](https://discord.com/oauth2/authorize?client_id=476974154168761339&scope=bot%20applications.commands&permissions=268435456) so Roblox names show on Discord profiles.",
+          "Discord cannot install third-party bots for us. Invite [Bloxlink](https://discord.com/oauth2/authorize?client_id=426537812993638400&permissions=1007021144&scope=bot%20applications.commands) (or use [blox.link](https://blox.link)), then run `/setup` in staff-chat so Roblox names show on Discord profiles.",
       },
       {
         name: "Talk as Ringnest",
