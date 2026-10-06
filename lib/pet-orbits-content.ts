@@ -512,6 +512,10 @@ export const faqs = [
     a: "Yes. Thumbstick, Sprint button, E prompts, and a dock that scrolls sideways. Same world as PC.",
   },
   {
+    q: "Do you have Discord?",
+    a: "Yes. Ringnest Discord is for updates, bug reports, finding people to play, and clips. The game itself still lives on Roblox. The Discord page on this site explains each channel.",
+  },
+  {
     q: "Where do I subscribe?",
     a: "Open VIP in the dock while you play, or the Roblox Store tab on the experience. Nest Club is the monthly there. About 70% of each sale goes to the Ringnest group.",
   },

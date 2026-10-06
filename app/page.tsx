@@ -1,4 +1,5 @@
 import { AboutBand } from "@/components/about-band";
+import { DiscordBand } from "@/components/discord-band";
 import { FeaturedGame } from "@/components/featured-game";
 import { Hero } from "@/components/hero";
 import { NestClubBand } from "@/components/nest-club";
@@ -14,6 +15,7 @@ export default function HomePage() {
       <FeaturedGame game={featured} />
       <NestClubBand />
       <WorldsGrid />
+      <DiscordBand />
       <AboutBand />
     </>
   );

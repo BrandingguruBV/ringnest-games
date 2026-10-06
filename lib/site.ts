@@ -11,6 +11,13 @@ export const site = {
   companyLegal: "Brandingguru BV, Netherlands",
   companyUrl: "https://branding-guru.com",
   groupName: "Ringnest",
+  discord: {
+    name: "Ringnest Discord",
+    serverId: "1556938161647517698",
+    url:
+      process.env.NEXT_PUBLIC_DISCORD_URL ??
+      "https://discord.com/channels/1556938161647517698",
+  },
   // Bump this when art or favicon changes so browsers fetch a new file.
   assetVersion: "20261004h",
 };

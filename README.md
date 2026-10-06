@@ -1,6 +1,6 @@
 # Ringnest website (ringnest.games)
 
-Public studio site for **Ringnest**. Play Pet Orbits from Games. The full Pet Orbits landing (`/games/pet-orbits`) covers why to play, 12 biomes, 162 pets, Nest Club, 12 passes, and 14 packs. Browse 162 pets on Catalog. About the studio on About.
+Public studio site for **Ringnest**. Play Pet Orbits from Games. The full Pet Orbits landing (`/games/pet-orbits`) covers why to play, 12 biomes, 162 pets, Nest Club, 12 passes, and 14 packs. Browse 162 pets on Catalog. About the studio on About. Discord guide on `/discord`.
 
 ## Run locally
 
@@ -22,6 +22,18 @@ Place id `85407099788309`. Universe id `10769197443`.
 
 ```bash
 NEXT_PUBLIC_PET_ORBITS_PLACE_ID=85407099788309
+```
+
+## Discord
+
+The `/discord` page is a player guide. The Open Discord button uses:
+
+`https://discord.com/channels/1556938161647517698`
+
+Optional never-expiring invite:
+
+```bash
+NEXT_PUBLIC_DISCORD_URL=https://discord.gg/your-invite
 ```
 
 ## Deploy

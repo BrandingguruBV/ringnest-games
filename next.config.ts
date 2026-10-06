@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
       { source: "/games/:path*", headers: noStore },
       { source: "/catalog", headers: noStore },
       { source: "/about", headers: noStore },
+      { source: "/discord", headers: noStore },
       { source: "/favicon.ico", headers: noStore },
       { source: "/icon.png", headers: noStore },
       { source: "/apple-icon.png", headers: noStore },

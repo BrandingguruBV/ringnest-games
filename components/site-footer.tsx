@@ -41,6 +41,9 @@ export function SiteFooter() {
           <Link href="/about" className="hover:text-white">
             About
           </Link>
+          <Link href="/discord" className="hover:text-white">
+            Discord
+          </Link>
           <Link href="/games/pet-orbits" className="hover:text-white">
             Pet Orbits
           </Link>

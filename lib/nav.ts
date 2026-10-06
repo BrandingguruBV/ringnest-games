@@ -36,6 +36,11 @@ export const desktopNav: SiteNavLink[] = [
     label: "About",
     match: (p) => p.startsWith("/about"),
   },
+  {
+    href: "/discord",
+    label: "Discord",
+    match: (p) => p.startsWith("/discord"),
+  },
 ];
 
 /** Extra destinations that live in the mobile More sheet. */
@@ -57,6 +62,12 @@ export const mobileMoreLinks: SiteNavLink[] = [
     label: "About",
     hint: "Ringnest and Brandingguru BV",
     match: (p) => p.startsWith("/about"),
+  },
+  {
+    href: "/discord",
+    label: "Discord",
+    hint: "Updates, bugs, crews, clips",
+    match: (p) => p.startsWith("/discord"),
   },
 ];
 

@@ -45,6 +45,12 @@ export function AboutBand() {
           >
             About Ringnest
           </Link>
+          <Link
+            href="/discord"
+            className="inline-flex h-12 items-center rounded-2xl bg-white/10 px-5 text-sm font-extrabold text-white ring-1 ring-white/15 hover:bg-white/16"
+          >
+            Discord
+          </Link>
           <a
             href={site.companyUrl}
             target="_blank"

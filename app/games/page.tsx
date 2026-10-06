@@ -29,6 +29,10 @@ export default function GamesPage() {
         <Link href="/catalog" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
           Catalog
         </Link>
+        . Talk, report bugs, and share clips on{" "}
+        <Link href="/discord" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
+          Discord
+        </Link>
         .
       </p>
 

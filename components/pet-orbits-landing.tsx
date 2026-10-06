@@ -602,6 +602,12 @@ export function PetOrbitsLanding({
           >
             Browse 162 pets
           </Link>
+          <Link
+            href="/discord"
+            className="inline-flex h-14 items-center justify-center rounded-2xl px-5 text-base font-extrabold text-white underline-offset-4 hover:underline"
+          >
+            Discord
+          </Link>
         </div>
       </div>
     </article>

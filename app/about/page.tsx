@@ -64,6 +64,18 @@ export default function AboutPage() {
           when they go live.
         </p>
       </section>
+
+      <section className="mt-10">
+        <h2 className="font-heading text-2xl font-extrabold text-white">Discord</h2>
+        <p className="mt-3 leading-relaxed text-white/90">
+          The{" "}
+          <Link href="/discord" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
+            Ringnest Discord
+          </Link>{" "}
+          is for updates, bug reports, finding people to play, and clips. Playing the game still
+          happens on Roblox.
+        </p>
+      </section>
     </article>
   );
 }
