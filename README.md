@@ -26,15 +26,18 @@ NEXT_PUBLIC_PET_ORBITS_PLACE_ID=85407099788309
 
 ## Discord
 
-The `/discord` page is a player guide. The Open Discord button uses:
-
-`https://discord.com/channels/1556938161647517698`
-
-Optional never-expiring invite:
+The `/discord` page is a player guide. After the Ringnest Discord bot is invited, `POST /api/discord/setup` builds the official layout (INFO, SUPPORT, PET ORBITS, tickets, AutoMod, ping buttons).
 
 ```bash
 NEXT_PUBLIC_DISCORD_URL=https://discord.gg/your-invite
+DISCORD_BOT_TOKEN=
+DISCORD_PUBLIC_KEY=
+DISCORD_APPLICATION_ID=
+DISCORD_GUILD_ID=1556938161647517698
+DISCORD_SETUP_SECRET=
 ```
+
+Set the Discord Interactions Endpoint URL to `https://ringnest.games/api/discord/interactions`.
 
 ## Deploy
 

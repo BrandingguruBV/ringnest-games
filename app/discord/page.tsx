@@ -55,7 +55,7 @@ export default function DiscordPage() {
       <section className="mt-12">
         <h2 className="font-heading text-2xl font-extrabold text-white">What you will find</h2>
         <p className="mt-3 leading-relaxed text-white/90">
-          Four channels. Pick the one that matches what you came for.
+          Four player rooms plus official news. Staff tickets stay private.
         </p>
         <ul className="mt-6 grid gap-4">
           {discordChannels.map((channel) => (
@@ -81,7 +81,7 @@ export default function DiscordPage() {
         <h2 className="font-heading text-2xl font-extrabold text-white">House rules</h2>
         <ul className="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed text-white/90">
           <li>Be kind. No scams, no account trading, no Robux giveaway fakes.</li>
-          <li>Put bugs in #bugs, news stays in #announcements, clips go in #clips-and-highlights.</li>
+          <li>Put bugs through #support-desk, news stays in #announcements, clips go in #clips.</li>
           <li>This server is for players who can already join Pet Orbits. Under-16 access follows Roblox Kids and Select, not Discord.</li>
         </ul>
       </section>
