@@ -1,8 +1,21 @@
-import { CHAT, DENY_ALL_VIEW, P, READ, STAFF, VOICE, bits } from "./discord-bitfield";
+import {
+  COSMETIC,
+  DENY_ALL_VIEW,
+  DENY_CONNECT,
+  DENY_SEND,
+  MEDIA,
+  P,
+  READ,
+  STAFF,
+  TALK,
+  VOICE,
+  bits,
+} from "./discord-bitfield";
 
 export const RINGNEST_GUILD_ID = "1556938161647517698";
 export const PLAY_URL = "https://www.roblox.com/games/85407099788309/Pet-Orbits";
 export const SITE_URL = "https://ringnest.games";
+export const FOOTER = "Ringnest · Pet Orbits";
 
 export const COLOR = {
   lime: 0x00e38c,
@@ -10,6 +23,7 @@ export const COLOR = {
   gold: 0xffd84a,
   pink: 0xff4fd8,
   navy: 0x0b1428,
+  orbiter: 0x9aa4ff,
 } as const;
 
 export type RoleSpec = {
@@ -59,20 +73,29 @@ export const ROLE_SPECS: RoleSpec[] = [
     hoist: true,
     permissions: STAFF,
   },
-  { key: "club", name: "Nest Club", color: COLOR.gold, hoist: true },
-  { key: "creator", name: "Creator", color: COLOR.pink, hoist: true },
-  { key: "tester", name: "Tester", color: 0x84e85a },
-  { key: "updates", name: "Updates", color: COLOR.cyan, mentionable: true },
-  { key: "events", name: "Events", color: COLOR.gold, mentionable: true },
-  { key: "codes", name: "Codes", color: COLOR.lime, mentionable: true },
+  { key: "club", name: "Nest Club", color: COLOR.gold, hoist: true, permissions: COSMETIC },
+  { key: "creator", name: "Creator", color: COLOR.pink, hoist: true, permissions: COSMETIC },
+  { key: "tester", name: "Tester", color: 0x84e85a, permissions: COSMETIC },
+  { key: "member", name: "Orbiter", color: COLOR.orbiter, permissions: COSMETIC },
+  { key: "phone", name: "Phone", color: 0x64748b, permissions: COSMETIC },
+  { key: "pc", name: "PC", color: 0x64748b, permissions: COSMETIC },
+  { key: "console", name: "Console", color: 0x64748b, permissions: COSMETIC },
+  { key: "updates", name: "Updates", color: COLOR.cyan, mentionable: true, permissions: COSMETIC },
+  { key: "events", name: "Events", color: COLOR.gold, mentionable: true, permissions: COSMETIC },
+  { key: "codes", name: "Codes", color: COLOR.lime, mentionable: true, permissions: COSMETIC },
 ];
+
+export type ChannelAccess = "read" | "member" | "club" | "voice";
 
 export type ChannelSpec = {
   key: string;
   name: string;
   type: "text" | "announce" | "forum" | "voice";
   topic: string;
-  chat?: boolean;
+  access?: ChannelAccess;
+  media?: boolean;
+  slowmode?: number;
+  userLimit?: number;
   aliases?: string[];
 };
 
@@ -92,7 +115,7 @@ export const CATEGORIES: CategorySpec[] = [
         key: "rules",
         name: "rules",
         type: "text",
-        topic: "How this Discord works. Read once.",
+        topic: "How this Discord works. Read once, then play.",
       },
       {
         key: "announcements",
@@ -111,13 +134,19 @@ export const CATEGORIES: CategorySpec[] = [
         key: "codes",
         name: "codes",
         type: "text",
-        topic: "Working promo codes. Staff only posts here.",
+        topic: "Working promo codes. Only Ringnest posts here.",
       },
       {
         key: "start-here",
         name: "start-here",
         type: "text",
         topic: "New to Pet Orbits? Start here.",
+      },
+      {
+        key: "faq",
+        name: "faq",
+        type: "text",
+        topic: "Short answers. Tickets still go through support-desk.",
       },
     ],
   },
@@ -129,7 +158,7 @@ export const CATEGORIES: CategorySpec[] = [
         key: "support-desk",
         name: "support-desk",
         type: "text",
-        topic: "Tap a button. A private ticket opens for you and Ringnest staff.",
+        topic: "Tap Bug or Help. A private ticket opens for you and Ringnest staff.",
       },
       {
         key: "bug-reports",
@@ -137,14 +166,18 @@ export const CATEGORIES: CategorySpec[] = [
         type: "forum",
         topic: "Public bugs. What broke, phone / PC / console, screenshot.",
         aliases: ["bugs"],
-        chat: true,
+        access: "member",
+        media: true,
+        slowmode: 15,
       },
       {
         key: "suggestions",
         name: "suggestions",
         type: "forum",
         topic: "Ideas for Pet Orbits. One idea per post.",
-        chat: true,
+        access: "member",
+        media: true,
+        slowmode: 15,
       },
     ],
   },
@@ -156,15 +189,17 @@ export const CATEGORIES: CategorySpec[] = [
         key: "looking-for-group",
         name: "looking-for-group",
         type: "text",
-        topic: "Who is in the arena. Crews and Nest Club runs.",
-        chat: true,
+        topic: "Who is in the arena. Platform + what you want to do.",
+        access: "member",
+        slowmode: 10,
       },
       {
         key: "nests-and-club",
         name: "nests-and-club",
         type: "text",
-        topic: "Nest Club, pens, biomes, and nest defense.",
-        chat: true,
+        topic: "Nest Club members chat here. Everyone can read.",
+        access: "club",
+        slowmode: 5,
       },
       {
         key: "clips",
@@ -172,7 +207,9 @@ export const CATEGORIES: CategorySpec[] = [
         type: "text",
         topic: "Hatches, crown wins, and nest runs. Your clips only.",
         aliases: ["clips-and-highlights"],
-        chat: true,
+        access: "member",
+        media: true,
+        slowmode: 15,
       },
     ],
   },
@@ -184,15 +221,32 @@ export const CATEGORIES: CategorySpec[] = [
         key: "chat",
         name: "chat",
         type: "text",
-        topic: "Pet Orbits talk. Keep reports in tickets. Keep videos in clips.",
+        topic: "Pet Orbits talk. Bugs go to support-desk. Videos go to clips.",
         aliases: ["general"],
-        chat: true,
+        access: "member",
+        slowmode: 5,
       },
       {
         key: "hangout-vc",
         name: "hangout",
         type: "voice",
         topic: "Jump in if you want people in your ear while you play.",
+        access: "voice",
+      },
+      {
+        key: "squad-vc",
+        name: "squad",
+        type: "voice",
+        topic: "Smaller voice room for a crew.",
+        access: "voice",
+        userLimit: 8,
+      },
+      {
+        key: "afk-vc",
+        name: "afk",
+        type: "voice",
+        topic: "Parked here if you go idle in voice.",
+        access: "voice",
       },
     ],
   },
@@ -212,7 +266,8 @@ export const CATEGORIES: CategorySpec[] = [
         name: "staff-chat",
         type: "text",
         topic: "Ringnest only.",
-        chat: true,
+        access: "member",
+        media: true,
       },
       {
         key: "mod-log",
@@ -233,66 +288,71 @@ export const BUTTON = {
   ticketClose: "rn_ticket_close",
 } as const;
 
-export function everyoneOverwrites(guildId: string, studioId: string, modId: string) {
+export type PermCtx = {
+  guildId: string;
+  studioId: string;
+  modId: string;
+  memberId: string;
+  clubId: string;
+};
+
+function staffOverwrites(ctx: PermCtx) {
   return [
-    { id: guildId, type: 0, deny: bits("send", "mentionEveryone", "manageMessages") },
-    { id: studioId, type: 0, allow: STAFF },
-    { id: modId, type: 0, allow: STAFF },
+    { id: ctx.studioId, type: 0, allow: STAFF, deny: "0" },
+    { id: ctx.modId, type: 0, allow: STAFF, deny: "0" },
   ];
 }
 
-export function categoryOverwrites(
-  guildId: string,
-  studioId: string,
-  modId: string,
-  hidden: boolean,
-) {
+export function categoryOverwrites(ctx: PermCtx, hidden: boolean) {
   if (hidden) {
-    return [
-      { id: guildId, type: 0, deny: DENY_ALL_VIEW },
-      { id: studioId, type: 0, allow: STAFF },
-      { id: modId, type: 0, allow: STAFF },
-    ];
+    return [{ id: ctx.guildId, type: 0, allow: "0", deny: DENY_ALL_VIEW }, ...staffOverwrites(ctx)];
   }
   return [
-    { id: guildId, type: 0, allow: P.view.toString(), deny: bits("send", "mentionEveryone") },
-    { id: studioId, type: 0, allow: STAFF },
-    { id: modId, type: 0, allow: STAFF },
+    { id: ctx.guildId, type: 0, allow: P.view.toString(), deny: DENY_SEND },
+    ...staffOverwrites(ctx),
   ];
 }
 
-export function channelOverwrites(
-  guildId: string,
-  studioId: string,
-  modId: string,
-  spec: ChannelSpec,
-  hiddenCategory: boolean,
-) {
+export function channelOverwrites(ctx: PermCtx, spec: ChannelSpec, hiddenCategory: boolean) {
+  const staff = staffOverwrites(ctx);
   if (hiddenCategory) {
-    return categoryOverwrites(guildId, studioId, modId, true);
+    return [{ id: ctx.guildId, type: 0, allow: "0", deny: DENY_ALL_VIEW }, ...staff];
   }
-  if (spec.chat) {
+  if (spec.type === "voice" || spec.access === "voice") {
     return [
-      { id: guildId, type: 0, allow: spec.type === "voice" ? VOICE : CHAT },
-      { id: studioId, type: 0, allow: STAFF },
-      { id: modId, type: 0, allow: STAFF },
+      { id: ctx.guildId, type: 0, allow: P.view.toString(), deny: DENY_CONNECT },
+      { id: ctx.memberId, type: 0, allow: VOICE, deny: "0" },
+      ...staff,
     ];
   }
-  if (spec.type === "voice") {
+  const talk = spec.media ? MEDIA : TALK;
+  if (spec.access === "club") {
     return [
-      { id: guildId, type: 0, allow: VOICE },
-      { id: studioId, type: 0, allow: STAFF },
-      { id: modId, type: 0, allow: STAFF },
+      { id: ctx.guildId, type: 0, allow: READ, deny: DENY_SEND },
+      { id: ctx.memberId, type: 0, allow: READ, deny: DENY_SEND },
+      { id: ctx.clubId, type: 0, allow: talk, deny: "0" },
+      ...staff,
     ];
   }
-  return [
-    { id: guildId, type: 0, allow: READ, deny: bits("send") },
-    { id: studioId, type: 0, allow: STAFF },
-    { id: modId, type: 0, allow: STAFF },
-  ];
+  if (spec.access === "member") {
+    return [
+      { id: ctx.guildId, type: 0, allow: READ, deny: DENY_SEND },
+      { id: ctx.memberId, type: 0, allow: talk, deny: "0" },
+      ...staff,
+    ];
+  }
+  return [{ id: ctx.guildId, type: 0, allow: READ, deny: DENY_SEND }, ...staff];
 }
 
-export const EMBEDS = {
+export type EmbedSpec = {
+  marker: string;
+  title: string;
+  color: number;
+  description: string;
+  fields?: { name: string; value: string }[];
+};
+
+export const EMBEDS: Record<string, EmbedSpec> = {
   rules: {
     marker: "RINGNEST_RULES",
     title: "House rules",
@@ -306,18 +366,25 @@ export const EMBEDS = {
       },
       {
         name: "2. Staff never DM first about Robux",
-        value: "If a “mod” messages you to verify an account or claim a prize, it is a fake. Report it here.",
+        value:
+          "If a “mod” messages you to verify an account or claim a prize, it is a fake. Report it in **support-desk**.",
       },
       {
-        name: "3. Put things in the right room",
-        value: "News is read-only. Bugs go through **support-desk**. Clips go in **clips**. Chat stays in **chat**.",
+        name: "3. Right room",
+        value:
+          "News is read-only. Bugs go through **support-desk**. Clips go in **clips**. Chat stays in **chat**.",
       },
       {
         name: "4. Age",
         value: "Discord is 13+. Under-16 play on Roblox follows Kids and Select, not this server.",
       },
       {
-        name: "5. Play first",
+        name: "5. Chat access",
+        value:
+          "Finish Server Guide and pick **I agree** to get **Orbiter**. That is what lets you talk in player rooms.",
+      },
+      {
+        name: "6. Play first",
         value: `[Pet Orbits on Roblox](${PLAY_URL}) · [ringnest.games](${SITE_URL})`,
       },
     ],
@@ -326,16 +393,17 @@ export const EMBEDS = {
     marker: "RINGNEST_START",
     title: "Start here",
     color: COLOR.lime,
-    description:
-      "Crash orbits. Hatch pets. Run nests. Then come back here when you want people.",
+    description: "Crash orbits. Hatch pets. Run nests. Then come back here when you want people.",
     fields: [
+      { name: "Play", value: `[Open Pet Orbits](${PLAY_URL})` },
       {
-        name: "Play",
-        value: `[Open Pet Orbits](${PLAY_URL})`,
+        name: "Get in",
+        value:
+          "Finish the Server Guide. Agree to the rules to get **Orbiter** — that unlocks chat, LFG, clips, and voice.",
       },
       {
         name: "Get pings",
-        value: "Use the buttons under **Pings** so you hear updates, events, and codes. You can turn them off the same way.",
+        value: "Use the **Updates / Events / Codes** buttons. Tap again to turn them off.",
       },
       {
         name: "Stuck or broken",
@@ -343,7 +411,7 @@ export const EMBEDS = {
       },
       {
         name: "Find a crew",
-        value: "**looking-for-group** is for “who is in the arena right now.” **nests-and-club** is for Nest Club.",
+        value: "**looking-for-group** is who is in the arena. **nests-and-club** is Nest Club members.",
       },
     ],
   },
@@ -356,6 +424,38 @@ export const EMBEDS = {
       { name: "Updates", value: "Patches and downtime." },
       { name: "Events", value: "Limiteds, crowns, and timed stuff." },
       { name: "Codes", value: "When a code is live." },
+    ],
+  },
+  faq: {
+    marker: "RINGNEST_FAQ",
+    title: "FAQ",
+    color: COLOR.cyan,
+    description: "Short answers. If it is still stuck, open a ticket in **support-desk**.",
+    fields: [
+      {
+        name: "Where do I play?",
+        value: `[Pet Orbits on Roblox](${PLAY_URL}). Discord is not the game.`,
+      },
+      {
+        name: "Where are codes?",
+        value: "Only in **codes**. If someone posts a code in chat, treat it as fake.",
+      },
+      {
+        name: "Something broke",
+        value: "**support-desk** → Bug. What broke, device, screenshot.",
+      },
+      {
+        name: "How do I join Nest Club?",
+        value: "Buy Nest Club in the Pet Orbits shop on Roblox. Then talk in **nests-and-club**.",
+      },
+      {
+        name: "Can I trade accounts / Robux?",
+        value: "No. That is how people lose accounts. We will not help recover that.",
+      },
+      {
+        name: "Did a mod DM me?",
+        value: "Ringnest staff never DM first about Robux, verification, or prizes.",
+      },
     ],
   },
   support: {
@@ -375,12 +475,86 @@ export const EMBEDS = {
       },
     ],
   },
+  lfg: {
+    marker: "RINGNEST_LFG",
+    title: "Looking for group",
+    color: COLOR.lime,
+    description: "Who is in the arena right now. Keep it short so people can join you.",
+    fields: [
+      {
+        name: "Format",
+        value: "`Phone / PC / Console` — orbits, nest, or club. Example: `PC — nest defense, biome 4`.",
+      },
+      {
+        name: "Don’t",
+        value: "No Robux for carries. No “verify this link.” No dumping the same line every 20 seconds.",
+      },
+    ],
+  },
+  nests: {
+    marker: "RINGNEST_NESTS",
+    title: "Nest Club room",
+    color: COLOR.gold,
+    description: "Everyone can read. Only **Nest Club** members can talk here.",
+    fields: [
+      {
+        name: "Use this for",
+        value: "Pens, biomes, nest defense, and club runs.",
+      },
+      {
+        name: "Need the role?",
+        value: "Nest Club is a Roblox purchase. Ping staff in a ticket after you own it if the role is missing.",
+      },
+    ],
+  },
+  clips: {
+    marker: "RINGNEST_CLIPS",
+    title: "Clips",
+    color: COLOR.pink,
+    description: "Your hatches, crown wins, and nest runs. One clip per post.",
+    fields: [
+      {
+        name: "This room",
+        value: "Video and screenshots belong here. Chat stays in **chat**.",
+      },
+      {
+        name: "Not this room",
+        value: "Someone else’s clip, ads, or “watch this to win Robux.”",
+      },
+    ],
+  },
+  chat: {
+    marker: "RINGNEST_CHAT",
+    title: "Chat",
+    color: COLOR.cyan,
+    description: "Day-to-day Pet Orbits talk. You need **Orbiter** to send messages here.",
+    fields: [
+      {
+        name: "Keep moving",
+        value: "Bugs → **support-desk**. Clips → **clips**. Crews → **looking-for-group**.",
+      },
+      {
+        name: "Slowmode is on",
+        value: "So the room stays readable when a drop hits.",
+      },
+    ],
+  },
+  announcements: {
+    marker: "RINGNEST_ANNOUNCE",
+    title: "Ringnest is live here",
+    color: COLOR.cyan,
+    description:
+      "Official Pet Orbits news lands in this room. Help is **support-desk**. Crews are **looking-for-group**.",
+    fields: [
+      { name: "Play", value: `[Pet Orbits](${PLAY_URL})` },
+      { name: "Site", value: `[ringnest.games](${SITE_URL})` },
+    ],
+  },
   patchSeed: {
     marker: "RINGNEST_PATCH_SEED",
     title: "How patch notes look",
     color: COLOR.cyan,
-    description:
-      "Ringnest posts here when Pet Orbits updates. Latest shipped version in this repo: **4.6.32**.",
+    description: "Ringnest posts here when Pet Orbits updates. Latest shipped version in this repo: **4.6.32**.",
     fields: [
       {
         name: "Format we use",
@@ -404,11 +578,17 @@ export const EMBEDS = {
     fields: [
       {
         name: "Still add Bloxlink",
-        value: "Discord cannot install third-party bots for us. Invite [Bloxlink](https://discord.com/oauth2/authorize?client_id=476974154168761339&scope=bot%20applications.commands&permissions=268435456) so Roblox names show on Discord profiles.",
+        value:
+          "Discord cannot install third-party bots for us. Invite [Bloxlink](https://discord.com/oauth2/authorize?client_id=476974154168761339&scope=bot%20applications.commands&permissions=268435456) so Roblox names show on Discord profiles.",
       },
       {
         name: "Talk as Ringnest",
         value: "Patch notes from the Studio role. Keep Brandingguru BV off player channels.",
+      },
+      {
+        name: "Chat lock",
+        value:
+          "Players need **Orbiter** (Server Guide → I agree). Nest Club talk is **nests-and-club** only. Owner/Admin can still type everywhere — that is Discord, not a leak.",
       },
     ],
   },
@@ -425,4 +605,20 @@ export const SCAM_WORDS = [
   "verify to claim",
   "gift nitro",
   "@everyone free",
+  "nitro gift",
+  "free roblox",
+  "robux generator",
+  "verify at",
+  "ticket.gift",
+  "blox.ia",
 ];
+
+export const JUNK_CHANNEL_NAMES = new Set([
+  "legacy-announcements",
+  "legacy-bugs",
+  "Lobby",
+  "Gaming",
+  "Text Channels",
+  "Voice Channels",
+  "General",
+]);

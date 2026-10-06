@@ -45,7 +45,21 @@ export function bits(...keys: (keyof typeof P)[]) {
   return keys.reduce((n, key) => n | P[key], BigInt(0)).toString();
 }
 
-export const CHAT = bits(
+export const TALK = bits(
+  "view",
+  "send",
+  "embed",
+  "history",
+  "addReactions",
+  "externalEmoji",
+  "externalStickers",
+  "publicThreads",
+  "sendThreads",
+  "appCommands",
+  "sendPolls",
+);
+
+export const MEDIA = bits(
   "view",
   "send",
   "embed",
@@ -60,9 +74,20 @@ export const CHAT = bits(
   "sendPolls",
 );
 
+/** @deprecated Use MEDIA. Kept so older setup code keeps compiling. */
+export const CHAT = MEDIA;
+
 export const READ = bits("view", "history", "addReactions", "appCommands");
 
 export const VOICE = bits("view", "connect", "speak", "stream", "history");
+
+export const EVERYONE_BASE = bits("view", "history", "addReactions", "nick", "appCommands");
+
+export const COSMETIC = bits("view");
+
+export const DENY_SEND = bits("send", "mentionEveryone");
+
+export const DENY_CONNECT = bits("connect");
 
 export const STAFF = bits(
   "view",

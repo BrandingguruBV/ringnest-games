@@ -26,7 +26,7 @@ NEXT_PUBLIC_PET_ORBITS_PLACE_ID=85407099788309
 
 ## Discord
 
-The `/discord` page is a player guide. After the Ringnest Discord bot is invited, `POST /api/discord/setup` builds the official layout (INFO, SUPPORT, PET ORBITS, tickets, AutoMod, ping buttons).
+The `/discord` page is a player guide. After the Ringnest Discord bot is invited, `POST /api/discord/setup` builds the official layout: INFO / SUPPORT / PET ORBITS / HANGOUT, Orbiter chat lock, Server Guide, AutoMod, tickets, slash commands, and ping buttons.
 
 ```bash
 NEXT_PUBLIC_DISCORD_URL=https://discord.gg/your-invite

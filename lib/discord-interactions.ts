@@ -1,9 +1,10 @@
 import { createPublicKey, verify } from "node:crypto";
 import { DiscordApi, type DiscordObject } from "./discord-api";
 import { STAFF, bits } from "./discord-bitfield";
-import { BUTTON, RINGNEST_GUILD_ID } from "./discord-server";
+import { BUTTON, PLAY_URL, RINGNEST_GUILD_ID, SITE_URL } from "./discord-server";
 
 const PING = 1;
+const APPLICATION_COMMAND = 2;
 const MESSAGE_COMPONENT = 3;
 const CHANNEL_MESSAGE = 4;
 const EPHEMERAL = 1 << 6;
@@ -18,7 +19,7 @@ type Interaction = {
   member?: { user?: { id: string; username: string }; roles?: string[] };
   user?: { id: string; username: string };
   message?: { id: string };
-  data?: { custom_id?: string; component_type?: number };
+  data?: { custom_id?: string; component_type?: number; name?: string };
 };
 
 export function verifyDiscordSignature(rawBody: string, signature: string | null, timestamp: string | null, publicKey: string) {
@@ -44,19 +45,24 @@ export async function handleDiscordInteraction(interaction: Interaction, token: 
   if (interaction.type === PING) {
     return { type: PING };
   }
-  if (interaction.type !== MESSAGE_COMPONENT || !interaction.data?.custom_id) {
-    return { type: CHANNEL_MESSAGE, data: { content: "Ringnest cannot handle that yet.", flags: EPHEMERAL } };
-  }
 
-  const customId = interaction.data.custom_id;
   const userId = interaction.member?.user?.id || interaction.user?.id;
   const username = interaction.member?.user?.username || interaction.user?.username || "player";
   const guildId = interaction.guild_id || RINGNEST_GUILD_ID;
+  const api = new DiscordApi(token);
+
+  if (interaction.type === APPLICATION_COMMAND) {
+    return handleSlash(api, guildId, interaction.data?.name || "");
+  }
+
+  if (interaction.type !== MESSAGE_COMPONENT || !interaction.data?.custom_id) {
+    return ephemeral("Ringnest cannot handle that yet.");
+  }
   if (!userId) {
     return ephemeral("Could not see who clicked.");
   }
 
-  const api = new DiscordApi(token);
+  const customId = interaction.data.custom_id;
 
   if (customId === BUTTON.updates || customId === BUTTON.events || customId === BUTTON.codes) {
     const key = customId === BUTTON.updates ? "Updates" : customId === BUTTON.events ? "Events" : "Codes";
@@ -72,6 +78,60 @@ export async function handleDiscordInteraction(interaction: Interaction, token: 
   }
 
   return ephemeral("Unknown button.");
+}
+
+async function handleSlash(api: DiscordApi, guildId: string, name: string) {
+  const channels = await api.get<(DiscordObject & { name: string; type: number })[]>(`/guilds/${guildId}/channels`);
+  const named = (channelName: string) => channels.find((channel) => channel.name === channelName);
+
+  if (name === "play") {
+    return {
+      type: CHANNEL_MESSAGE,
+      data: {
+        flags: EPHEMERAL,
+        content: "Pet Orbits is on Roblox. Discord is just the chat next to it.",
+        components: [
+          {
+            type: 1,
+            components: [
+              { type: 2, style: 5, label: "Play Pet Orbits", url: PLAY_URL },
+              { type: 2, style: 5, label: "ringnest.games", url: SITE_URL },
+            ],
+          },
+        ],
+      },
+    };
+  }
+
+  if (name === "codes") {
+    const channel = named("codes");
+    return ephemeral(
+      channel
+        ? `Official codes are only posted in <#${channel.id}>. Anything in chat is fake.`
+        : "Official codes land in #codes.",
+    );
+  }
+
+  if (name === "support") {
+    const channel = named("support-desk");
+    return ephemeral(
+      channel
+        ? `Open a private ticket in <#${channel.id}>. Tap **Bug** or **Help**. Staff never DM you first about Robux.`
+        : "Open a private ticket in #support-desk.",
+    );
+  }
+
+  if (name === "rules") {
+    const channel = named("rules");
+    return ephemeral(channel ? `House rules are in <#${channel.id}>.` : "House rules are in #rules.");
+  }
+
+  if (name === "faq") {
+    const channel = named("faq");
+    return ephemeral(channel ? `Short answers live in <#${channel.id}>.` : "Short answers live in #faq.");
+  }
+
+  return ephemeral("Unknown command.");
 }
 
 async function toggleRole(api: DiscordApi, guildId: string, userId: string, roleName: string) {
@@ -143,7 +203,7 @@ async function openTicket(
           kind === "bug"
             ? "What broke, phone / PC / console, and a screenshot if you can."
             : "What are you trying to do in Pet Orbits?",
-        footer: { text: "RINGNEST_TICKET" },
+        footer: { text: "Ringnest · Pet Orbits" },
       },
     ],
     components: [

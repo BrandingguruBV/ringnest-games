@@ -55,7 +55,7 @@ export default function DiscordPage() {
       <section className="mt-12">
         <h2 className="font-heading text-2xl font-extrabold text-white">What you will find</h2>
         <p className="mt-3 leading-relaxed text-white/90">
-          Four player rooms plus official news. Staff tickets stay private.
+          Read-only news first. Chat unlocks after Server Guide. Staff tickets stay private.
         </p>
         <ul className="mt-6 grid gap-4">
           {discordChannels.map((channel) => (

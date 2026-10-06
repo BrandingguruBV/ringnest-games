@@ -2,7 +2,7 @@ import { setupDiscord } from "@/lib/discord-setup";
 import { RINGNEST_GUILD_ID } from "@/lib/discord-server";
 
 export const runtime = "nodejs";
-export const maxDuration = 60;
+export const maxDuration = 300;
 
 export async function POST(request: Request) {
   const expected = process.env.DISCORD_SETUP_SECRET || process.env.CRON_SECRET;
