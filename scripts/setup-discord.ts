@@ -1,5 +1,5 @@
-import { setupDiscord } from "../lib/discord-setup.ts";
-import { RINGNEST_GUILD_ID } from "../lib/discord-server.ts";
+import { setupDiscord } from "../lib/discord-setup";
+import { RINGNEST_GUILD_ID } from "../lib/discord-server";
 
 const token = process.env.DISCORD_BOT_TOKEN;
 if (!token) {

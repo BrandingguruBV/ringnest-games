@@ -1,7 +1,7 @@
 import { createPublicKey, verify } from "node:crypto";
-import { DiscordApi, type DiscordObject } from "./discord-api.ts";
-import { STAFF, bits } from "./discord-bitfield.ts";
-import { BUTTON, RINGNEST_GUILD_ID } from "./discord-server.ts";
+import { DiscordApi, type DiscordObject } from "./discord-api";
+import { STAFF, bits } from "./discord-bitfield";
+import { BUTTON, RINGNEST_GUILD_ID } from "./discord-server";
 
 const PING = 1;
 const MESSAGE_COMPONENT = 3;

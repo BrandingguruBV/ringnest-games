@@ -1,4 +1,4 @@
-import { CHAT, DENY_ALL_VIEW, P, READ, STAFF, VOICE, bits } from "./discord-bitfield.ts";
+import { CHAT, DENY_ALL_VIEW, P, READ, STAFF, VOICE, bits } from "./discord-bitfield";
 
 export const RINGNEST_GUILD_ID = "1556938161647517698";
 export const PLAY_URL = "https://www.roblox.com/games/85407099788309/Pet-Orbits";

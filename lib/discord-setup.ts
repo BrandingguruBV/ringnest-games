@@ -1,8 +1,8 @@
 import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { DiscordApi, type DiscordObject } from "./discord-api.ts";
-import { bits } from "./discord-bitfield.ts";
+import { DiscordApi, type DiscordObject } from "./discord-api";
+import { bits } from "./discord-bitfield";
 import {
   BUTTON,
   CATEGORIES,
@@ -16,7 +16,7 @@ import {
   categoryOverwrites,
   channelOverwrites,
   type ChannelSpec,
-} from "./discord-server.ts";
+} from "./discord-server";
 
 const TYPE = { text: 0, voice: 2, category: 4, announce: 5, forum: 15 } as const;
 
