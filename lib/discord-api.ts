@@ -11,12 +11,16 @@ export type DiscordObject = {
 };
 
 export class DiscordApi {
-  constructor(private readonly token: string) {}
+  private token: string;
+  constructor(token: string) {
+    this.token = token;
+  }
 
   async request<T>(method: string, path: string, body?: unknown, extra: RequestInit = {}): Promise<T> {
     for (let attempt = 0; attempt < 8; attempt += 1) {
       const headers: Record<string, string> = {
         Authorization: `Bot ${this.token}`,
+        "User-Agent": "DiscordBot (https://ringnest.games, 1.0)",
         "X-Audit-Log-Reason": "Ringnest studio Discord setup",
         ...(extra.headers as Record<string, string> | undefined),
       };

@@ -1,4 +1,4 @@
-import { CHAT, DENY_ALL_VIEW, P, READ, STAFF, VOICE, bits } from "./discord-bitfield";
+import { CHAT, DENY_ALL_VIEW, P, READ, STAFF, VOICE, bits } from "./discord-bitfield.ts";
 
 export const RINGNEST_GUILD_ID = "1556938161647517698";
 export const PLAY_URL = "https://www.roblox.com/games/85407099788309/Pet-Orbits";
@@ -92,32 +92,32 @@ export const CATEGORIES: CategorySpec[] = [
         key: "rules",
         name: "rules",
         type: "text",
-        topic: "How Ringnest Discord works. Read this once.",
+        topic: "How this Discord works. Read once.",
       },
       {
         key: "announcements",
         name: "announcements",
         type: "announce",
-        topic: "Official Pet Orbits news from Ringnest. Read-only.",
+        topic: "Official Pet Orbits news from Ringnest. Read only.",
         aliases: ["announcement"],
       },
       {
         key: "patch-notes",
         name: "patch-notes",
         type: "text",
-        topic: "What changed in the game, with the version number.",
+        topic: "What changed in Pet Orbits, with the version number.",
       },
       {
         key: "codes",
         name: "codes",
         type: "text",
-        topic: "Working codes. Expired codes get marked. Staff only posts here.",
+        topic: "Working promo codes. Staff only posts here.",
       },
       {
         key: "start-here",
         name: "start-here",
         type: "text",
-        topic: "New to Pet Orbits or this Discord? Start here.",
+        topic: "New to Pet Orbits? Start here.",
       },
     ],
   },
@@ -156,7 +156,7 @@ export const CATEGORIES: CategorySpec[] = [
         key: "looking-for-group",
         name: "looking-for-group",
         type: "text",
-        topic: "Who is in the arena. Crews, private servers, Nest Club runs.",
+        topic: "Who is in the arena. Crews and Nest Club runs.",
         chat: true,
       },
       {
@@ -170,7 +170,7 @@ export const CATEGORIES: CategorySpec[] = [
         key: "clips",
         name: "clips",
         type: "text",
-        topic: "Your hatches, crown steals, and nest runs. Your clips only.",
+        topic: "Hatches, crown wins, and nest runs. Your clips only.",
         aliases: ["clips-and-highlights"],
         chat: true,
       },
@@ -184,7 +184,7 @@ export const CATEGORIES: CategorySpec[] = [
         key: "chat",
         name: "chat",
         type: "text",
-        topic: "Pet Orbits talk. Keep bugs in tickets. Keep clips in #clips.",
+        topic: "Pet Orbits talk. Keep reports in tickets. Keep videos in clips.",
         aliases: ["general"],
         chat: true,
       },

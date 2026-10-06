@@ -1,8 +1,8 @@
 import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { DiscordApi, type DiscordObject } from "./discord-api";
-import { bits } from "./discord-bitfield";
+import { DiscordApi, type DiscordObject } from "./discord-api.ts";
+import { bits } from "./discord-bitfield.ts";
 import {
   BUTTON,
   CATEGORIES,
@@ -16,7 +16,7 @@ import {
   categoryOverwrites,
   channelOverwrites,
   type ChannelSpec,
-} from "./discord-server";
+} from "./discord-server.ts";
 
 const TYPE = { text: 0, voice: 2, category: 4, announce: 5, forum: 15 } as const;
 
@@ -135,11 +135,14 @@ export async function setupDiscord(token: string, guildId = RINGNEST_GUILD_ID): 
     position += 1;
 
     for (const spec of category.channels) {
-      const wantType = TYPE[spec.type];
+      const wantType = spec.type === "announce" ? TYPE.text : TYPE[spec.type];
       let existing = findChannel(channels, spec);
       if (existing && existing.type !== wantType) {
-        await api.patch(`/channels/${existing.id}`, { name: `legacy-${existing.name}`.slice(0, 90) });
-        existing = undefined;
+        const compatibleAnnounce = spec.type === "announce" && (existing.type === 0 || existing.type === 5);
+        if (!compatibleAnnounce) {
+          await api.patch(`/channels/${existing.id}`, { name: `legacy-${existing.name}`.slice(0, 90) });
+          existing = undefined;
+        }
       }
       const overwrites = channelOverwrites(guildId, studioId, modId, spec, Boolean(category.hidden));
       const payload: Record<string, unknown> = {
@@ -154,7 +157,12 @@ export async function setupDiscord(token: string, guildId = RINGNEST_GUILD_ID): 
       }
       let saved: Channel;
       if (existing) {
-        saved = await api.patch<Channel>(`/channels/${existing.id}`, payload);
+        try {
+          saved = await api.patch<Channel>(`/channels/${existing.id}`, payload);
+        } catch {
+          const { topic: _topic, ...noTopic } = payload;
+          saved = await api.patch<Channel>(`/channels/${existing.id}`, noTopic);
+        }
       } else {
         try {
           saved = await api.post<Channel>(`/guilds/${guildId}/channels`, {
@@ -162,16 +170,23 @@ export async function setupDiscord(token: string, guildId = RINGNEST_GUILD_ID): 
             type: wantType,
           });
         } catch (error) {
-          if (spec.type !== "forum") {
-            throw error;
+          const { topic: _topic, ...noTopic } = payload;
+          try {
+            saved = await api.post<Channel>(`/guilds/${guildId}/channels`, {
+              ...noTopic,
+              type: spec.type === "forum" ? TYPE.text : wantType,
+            });
+          } catch {
+            if (spec.type !== "forum") {
+              throw error;
+            }
+            saved = await api.post<Channel>(`/guilds/${guildId}/channels`, {
+              name: spec.name,
+              parent_id: cat.id,
+              permission_overwrites: overwrites,
+              type: TYPE.text,
+            });
           }
-          saved = await api.post<Channel>(`/guilds/${guildId}/channels`, {
-            name: spec.name,
-            topic: spec.topic,
-            parent_id: cat.id,
-            permission_overwrites: overwrites,
-            type: TYPE.text,
-          });
         }
       }
       channelIds[spec.key] = saved.id;

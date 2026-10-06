@@ -16,7 +16,7 @@ export const site = {
     serverId: "1556938161647517698",
     url:
       process.env.NEXT_PUBLIC_DISCORD_URL ??
-      "https://discord.com/channels/1556938161647517698",
+      "https://discord.gg/FhH6t6PhvR",
   },
   // Bump this when art or favicon changes so browsers fetch a new file.
   assetVersion: "20261004h",
