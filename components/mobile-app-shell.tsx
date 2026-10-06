@@ -138,10 +138,10 @@ export function MobileAppShell() {
             role="dialog"
             aria-modal="true"
             aria-labelledby={titleId}
-            className="absolute inset-x-0 bottom-0 max-h-[min(78dvh,34rem)] overflow-y-auto rounded-t-[1.75rem] border border-white/10 bg-[#0a1022] px-4 pb-[calc(5.75rem+env(safe-area-inset-bottom))] pt-3 shadow-[0_-24px_80px_rgba(0,0,0,0.55)]"
+            className="absolute inset-x-0 bottom-[calc(5.15rem+env(safe-area-inset-bottom))] max-h-[calc(100dvh-5.5rem-env(safe-area-inset-top)-env(safe-area-inset-bottom))] overflow-y-auto rounded-t-[1.75rem] border border-white/10 bg-[#0a1022] px-4 pb-4 pt-3 shadow-[0_-24px_80px_rgba(0,0,0,0.55)]"
           >
-            <div className="mx-auto mb-4 h-1.5 w-12 rounded-full bg-white/20" />
-            <div className="mb-4 flex items-start justify-between gap-3">
+            <div className="mx-auto mb-2.5 h-1.5 w-12 rounded-full bg-white/20" />
+            <div className="mb-3 flex items-start justify-between gap-3">
               <div>
                 <p className="text-[13px] font-extrabold tracking-[0.22em] text-cyan-300 uppercase">
                   Ringnest
@@ -165,11 +165,11 @@ export function MobileAppShell() {
                 return null;
               }
               return (
-                <section key={group} className="mt-4 first:mt-0">
-                  <p className="mb-2 px-1 text-[12px] font-extrabold tracking-[0.2em] text-cyan-300 uppercase">
+                <section key={group} className="mt-3 first:mt-0">
+                  <p className="mb-1.5 px-1 text-[12px] font-extrabold tracking-[0.2em] text-cyan-300 uppercase">
                     {group}
                   </p>
-                  <ul className="grid gap-2">
+                  <ul className="grid gap-1.5">
                     {links.map((link) => {
                       const active = link.match(pathname, hash);
                       return (
@@ -178,7 +178,7 @@ export function MobileAppShell() {
                             href={link.href}
                             onClick={() => setMoreOpen(false)}
                             className={cn(
-                              "flex min-h-16 items-center justify-between gap-3 rounded-2xl px-4 py-3 ring-1 transition",
+                              "flex min-h-14 items-center justify-between gap-3 rounded-2xl px-4 py-2.5 ring-1 transition",
                               active
                                 ? "bg-[#00e38c]/14 text-white ring-[#00e38c]/40"
                                 : "bg-[#0b1428]/82 text-white ring-white/10 active:bg-white/10",
@@ -203,15 +203,6 @@ export function MobileAppShell() {
                 </section>
               );
             })}
-
-            <div className="mt-4">
-              <PlayOnRoblox
-                href={featured.playUrl}
-                size="lg"
-                label="Play on Roblox"
-                className="w-full justify-center"
-              />
-            </div>
           </div>
         </div>
       ) : null}
