@@ -47,7 +47,7 @@ export function SiteHeader() {
             RINGNEST
           </span>
         </Link>
-        <nav className="ml-1 hidden items-center gap-1 md:flex">
+        <nav className="ml-1 hidden items-center gap-0.5 lg:gap-1 md:flex" aria-label="Site">
           {desktopNav.map((link) => {
             const active = link.match(pathname, hash);
             return (

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { footerNav } from "@/lib/nav";
 import { site } from "@/lib/site";
 
 export function SiteFooter() {
@@ -32,24 +33,11 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="flex flex-wrap gap-4 text-sm font-semibold text-white/90">
-          <Link href="/games" className="hover:text-white">
-            Games
-          </Link>
-          <Link href="/catalog" className="hover:text-white">
-            Catalog
-          </Link>
-          <Link href="/about" className="hover:text-white">
-            About
-          </Link>
-          <Link href="/discord" className="hover:text-white">
-            Discord
-          </Link>
-          <Link href="/games/pet-orbits" className="hover:text-white">
-            Pet Orbits
-          </Link>
-          <Link href="/games/pet-orbits#shop" className="hover:text-white">
-            Nest Club
-          </Link>
+          {footerNav.map((link) => (
+            <Link key={link.href} href={link.href} className="hover:text-white">
+              {link.label}
+            </Link>
+          ))}
         </div>
       </div>
     </footer>

@@ -5,7 +5,12 @@ import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { PlayOnRoblox } from "@/components/play-on-roblox";
 import { featuredGame } from "@/lib/games";
-import { isMobileMoreActive, isNestClubHash, mobileMoreLinks } from "@/lib/nav";
+import {
+  isMobileMoreActive,
+  isNestClubHash,
+  mobileMoreGroups,
+  mobileMoreLinks,
+} from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
 type Tab = {
@@ -27,7 +32,7 @@ const tabs: Tab[] = [
   {
     kind: "link",
     href: "/games/pet-orbits",
-    label: "Orbits",
+    label: "Game",
     icon: OrbitsIcon,
     match: (p, h) => p.startsWith("/games/") && !isNestClubHash(h),
   },
@@ -154,37 +159,50 @@ export function MobileAppShell() {
               </button>
             </div>
 
-            <ul className="grid gap-2">
-              {mobileMoreLinks.map((link) => {
-                const active = link.match(pathname, hash);
-                return (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      onClick={() => setMoreOpen(false)}
-                      className={cn(
-                        "flex min-h-16 items-center justify-between gap-3 rounded-2xl px-4 py-3 ring-1 transition",
-                        active
-                          ? "bg-[#00e38c]/14 text-white ring-[#00e38c]/40"
-                          : "bg-[#0b1428]/82 text-white ring-white/10 active:bg-white/10",
-                      )}
-                    >
-                      <span>
-                        <span className="block text-base font-extrabold">{link.label}</span>
-                        {link.hint ? (
-                          <span className="mt-0.5 block text-sm font-semibold text-white/94">
-                            {link.hint}
-                          </span>
-                        ) : null}
-                      </span>
-                      <span className="text-lg font-extrabold text-white/90" aria-hidden>
-                        ›
-                      </span>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+            {mobileMoreGroups.map((group) => {
+              const links = mobileMoreLinks.filter((link) => link.group === group);
+              if (links.length === 0) {
+                return null;
+              }
+              return (
+                <section key={group} className="mt-4 first:mt-0">
+                  <p className="mb-2 px-1 text-[12px] font-extrabold tracking-[0.2em] text-cyan-300 uppercase">
+                    {group}
+                  </p>
+                  <ul className="grid gap-2">
+                    {links.map((link) => {
+                      const active = link.match(pathname, hash);
+                      return (
+                        <li key={link.href}>
+                          <Link
+                            href={link.href}
+                            onClick={() => setMoreOpen(false)}
+                            className={cn(
+                              "flex min-h-16 items-center justify-between gap-3 rounded-2xl px-4 py-3 ring-1 transition",
+                              active
+                                ? "bg-[#00e38c]/14 text-white ring-[#00e38c]/40"
+                                : "bg-[#0b1428]/82 text-white ring-white/10 active:bg-white/10",
+                            )}
+                          >
+                            <span>
+                              <span className="block text-base font-extrabold">{link.label}</span>
+                              {link.hint ? (
+                                <span className="mt-0.5 block text-sm font-semibold text-white/94">
+                                  {link.hint}
+                                </span>
+                              ) : null}
+                            </span>
+                            <span className="text-lg font-extrabold text-white/90" aria-hidden>
+                              ›
+                            </span>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </section>
+              );
+            })}
 
             <div className="mt-4">
               <PlayOnRoblox
@@ -258,6 +276,7 @@ export function MobileAppShell() {
               <Link
                 key={tab.href}
                 href={tab.href!}
+                aria-label={tab.href === "/games/pet-orbits" ? "Pet Orbits" : undefined}
                 onClick={() => setMoreOpen(false)}
                 className={cn(
                   "flex min-h-12 w-full flex-col items-center gap-0.5 rounded-2xl px-1 py-2 text-[13px] font-extrabold tracking-wide",
