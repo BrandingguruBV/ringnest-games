@@ -220,6 +220,7 @@ export async function setupDiscord(token: string, guildId = RINGNEST_GUILD_ID): 
   await upsertWidget(api, guildId, channelIds.announcements);
 
   await upsertEmbed(api, channelIds.rules, EMBEDS.rules, [
+    { type: 2, style: 3, label: "I agree", custom_id: BUTTON.agree },
     { type: 2, style: 5, label: "Play Pet Orbits", url: PLAY_URL },
     { type: 2, style: 5, label: "ringnest.games", url: SITE_URL },
   ]);
@@ -326,6 +327,7 @@ async function orderRoles(api: DiscordApi, guildId: string, roleIds: Record<stri
     roleIds.creator,
     roleIds.tester,
     roleIds.member,
+    roleIds.visitor,
     roleIds.phone,
     roleIds.pc,
     roleIds.console,
@@ -399,7 +401,7 @@ async function upsertOnboarding(
             id: optionId("Have you read the house rules?", "Just looking for now", 22),
             title: "Just looking for now",
             description: "Read-only until you agree",
-            role_ids: [],
+            role_ids: [roleIds.visitor || roleIds.member],
             emoji_name: "👀",
           },
         ],

@@ -69,6 +69,10 @@ export async function handleDiscordInteraction(interaction: Interaction, token: 
     return toggleRole(api, guildId, userId, key);
   }
 
+  if (customId === BUTTON.agree) {
+    return grantOrbiter(api, guildId, userId);
+  }
+
   if (customId === BUTTON.ticketBug || customId === BUTTON.ticketHelp) {
     return openTicket(api, guildId, userId, username, customId === BUTTON.ticketBug ? "bug" : "help");
   }
@@ -132,6 +136,20 @@ async function handleSlash(api: DiscordApi, guildId: string, name: string) {
   }
 
   return ephemeral("Unknown command.");
+}
+
+async function grantOrbiter(api: DiscordApi, guildId: string, userId: string) {
+  const roles = await api.get<{ id: string; name: string }[]>(`/guilds/${guildId}/roles`);
+  const orbiter = roles.find((item) => item.name === "Orbiter");
+  if (!orbiter) {
+    return ephemeral("Orbiter is not on this server yet.");
+  }
+  const member = await api.get<{ roles: string[] }>(`/guilds/${guildId}/members/${userId}`);
+  if (member.roles.includes(orbiter.id)) {
+    return ephemeral("You already have **Orbiter**. You can talk in chat, looking-for-group, clips, and voice.");
+  }
+  await api.put(`/guilds/${guildId}/members/${userId}/roles/${orbiter.id}`);
+  return ephemeral("Rules accepted. You now have **Orbiter** — chat, LFG, clips, and voice are unlocked.");
 }
 
 async function toggleRole(api: DiscordApi, guildId: string, userId: string, roleName: string) {

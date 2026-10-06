@@ -77,6 +77,7 @@ export const ROLE_SPECS: RoleSpec[] = [
   { key: "creator", name: "Creator", color: COLOR.pink, hoist: true, permissions: COSMETIC },
   { key: "tester", name: "Tester", color: 0x84e85a, permissions: COSMETIC },
   { key: "member", name: "Orbiter", color: COLOR.orbiter, permissions: COSMETIC },
+  { key: "visitor", name: "Visitor", color: 0x64748b, permissions: COSMETIC },
   { key: "phone", name: "Phone", color: 0x64748b, permissions: COSMETIC },
   { key: "pc", name: "PC", color: 0x64748b, permissions: COSMETIC },
   { key: "console", name: "Console", color: 0x64748b, permissions: COSMETIC },
@@ -283,6 +284,7 @@ export const BUTTON = {
   updates: "rn_ping_updates",
   events: "rn_ping_events",
   codes: "rn_ping_codes",
+  agree: "rn_agree_rules",
   ticketBug: "rn_ticket_bug",
   ticketHelp: "rn_ticket_help",
   ticketClose: "rn_ticket_close",
@@ -381,7 +383,7 @@ export const EMBEDS: Record<string, EmbedSpec> = {
       {
         name: "5. Chat access",
         value:
-          "Finish Server Guide and pick **I agree** to get **Orbiter**. That is what lets you talk in player rooms.",
+          "Tap **I agree** on the house rules (or finish Server Guide) to get **Orbiter**. That is what lets you talk in player rooms.",
       },
       {
         name: "6. Play first",
@@ -399,7 +401,7 @@ export const EMBEDS: Record<string, EmbedSpec> = {
       {
         name: "Get in",
         value:
-          "Finish the Server Guide. Agree to the rules to get **Orbiter** — that unlocks chat, LFG, clips, and voice.",
+          "Tap **I agree** under House rules. That gives **Orbiter** and unlocks chat, LFG, clips, and voice.",
       },
       {
         name: "Get pings",
