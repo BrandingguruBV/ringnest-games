@@ -5,7 +5,7 @@ import { useEffect } from "react";
 const ASSETS = [
   {
     kind: "style" as const,
-    href: "https://static.virtuagym.com/vg-guest-booking-widget/dist/css/app.css",
+    href: 
   },
   {
     kind: "script" as const,
