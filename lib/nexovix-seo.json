@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-10-09T19:42:11.052Z",
+  "site": "Ringnest",
+  "url": "https://ringnest.games/",
+  "title": "Ringnest | Games on Roblox",
+  "description": "Ringnest makes games on Roblox. Play Pet Orbits: crash orbits, hatch 162 pets, run 12 biome nests, and come back for daily quests and offline pens.",
+  "canonical": "https://ringnest.games/",
+  "openGraph": {
+    "title": "Ringnest",
+    "description": "Ringnest makes games on Roblox. Play Pet Orbits: crash orbits, hatch 162 pets, run 12 biome nests, and come back for daily quests and offline pens.",
+    "image": "https://ringnest.games/brand/banner.jpg",
+    "siteName": "Ringnest",
+    "type": "website"
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "Ringnest",
+    "description": "Ringnest makes games on Roblox. Play Pet Orbits: crash orbits, hatch 162 pets, run 12 biome nests, and come back for daily quests and offline pens.",
+    "image": "https://ringnest.games/brand/banner.jpg"
+  },
+  "jsonLd": {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Ringnest",
+    "url": "https://ringnest.games/"
+  },
+  "sitemapUrls": [
+    "https://ringnest.games",
+    "https://ringnest.games/games/pet-orbits",
+    "https://ringnest.games/catalog",
+    "https://ringnest.games/discord",
+    "https://ringnest.games/about",
+    "https://ringnest.games/games",
+    "https://ringnest.games/games/next-world"
+  ],
+  "gapsBefore": [
+    "canonical",
+    "json-ld",
+    "robots.txt",
+    "sitemap.xml"
+  ]
+}
