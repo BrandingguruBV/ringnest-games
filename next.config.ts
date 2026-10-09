@@ -42,3 +42,5 @@ export default nextConfig;
 // nexovix-perf-v3: image formats + compress already present
 
 // nexovix-perf-v4: image formats + compress already present
+
+// nexovix-perf-v5: image formats + compress already present
