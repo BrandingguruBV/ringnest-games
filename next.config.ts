@@ -7,16 +7,15 @@ const noStore = [
 ];
 
 const nextConfig: NextConfig = {
-  // nexovix-perf-v2
-  compiler: { removeConsole: process.env.NODE_ENV === "production" },
-
+  // nexovix-perf-v6
   compress: true,
   poweredByHeader: false,
-  images: { formats: ["image/avif", "image/webp"], minimumCacheTTL: 2592000 },
+  compiler: { removeConsole: process.env.NODE_ENV === "production" },
+
 
   // Serve /public images directly. Avoids broken _next/image placeholders
   // on some browsers, ad blockers, and protected preview hosts.
-  images: {
+  images: { formats: ["image/avif", "image/webp"], 
     unoptimized: true,
   },
   async headers() {
@@ -39,8 +38,4 @@ const nextConfig: NextConfig = {
 
 export default nextConfig;
 
-// nexovix-perf-v3: image formats + compress already present
 
-// nexovix-perf-v4: image formats + compress already present
-
-// nexovix-perf-v5: image formats + compress already present
