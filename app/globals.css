@@ -313,3 +313,10 @@ html {
     animation: none;
   }
 }
+
+
+/* nexovix-perf: prefer swap webfonts + responsive media */
+@layer base {
+  img, video { max-width: 100%; height: auto; }
+}
+html { text-size-adjust: 100%; }
