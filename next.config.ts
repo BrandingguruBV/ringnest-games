@@ -38,3 +38,5 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+// nexovix-perf-v3: image formats + compress already present
