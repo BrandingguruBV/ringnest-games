@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-10-09T23:19:32.623Z",
+  "generatedAt": "2026-10-09T23:30:04.416Z",
   "site": "Ringnest",
   "url": "https://ringnest.games/",
-  "packVersion": 5,
+  "packVersion": 6,
   "pass": 1,
   "threshold": 90,
   "target": "All Lighthouse pillars ≥ 90 on mobile and desktop",
   "failing": [
+    "mobile:performance:68",
     "desktop:performance:68"
   ],
   "written": [
     "components/nexovix-perf.tsx",
-    "components/nexovix-perf-deferred.tsx",
     "next.config.ts",
     "app/globals.css"
   ]
