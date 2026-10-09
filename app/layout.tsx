@@ -21,6 +21,7 @@ const sans = Nunito({
 });
 
 export const metadata: Metadata = {
+  description: "Ringnest makes games on Roblox. Play Pet Orbits: crash orbits, hatch 162 pets, run 12 biome nests, and come back for daily quests and offline pens.",
   metadataBase: new URL(site.url),
   title: {
     default: "Ringnest | Games on Roblox",
