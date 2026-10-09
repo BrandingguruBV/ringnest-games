@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-10-09T21:34:03.974Z",
+  "site": "Ringnest",
+  "url": "https://ringnest.games/",
+  "threshold": 90,
+  "target": "All Lighthouse pillars ≥ 90 on mobile and desktop",
+  "written": [
+    "lib/nexovix-seo.json",
+    "components/nexovix-perf.tsx",
+    "app/layout.tsx",
+    "next.config.ts",
+    "vercel.json",
+    "app/globals.css"
+  ]
+}
