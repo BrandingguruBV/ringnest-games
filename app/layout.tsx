@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { WorldBackdrop } from "@/components/world-backdrop";
 import { site } from "@/lib/site";
+import { NexovixConnectGtmNoscript, NexovixConnectTracking } from "../components/nexovix-connect-tracking";
 import "./globals.css";
 
 const heading = Fredoka({
@@ -86,6 +87,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`dark ${heading.variable} ${sans.variable} h-full antialiased`}
     >
       <body className="app-shell relative min-h-full flex flex-col font-sans text-foreground">
+        <NexovixConnectGtmNoscript />
         <FreshLoad />
         <WorldBackdrop />
         <SiteHeader />
@@ -94,6 +96,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <SiteFooter />
         <MobileAppShell />
+              <NexovixConnectTracking />
       </body>
     </html>
   );
