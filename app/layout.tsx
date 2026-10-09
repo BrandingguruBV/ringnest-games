@@ -8,6 +8,7 @@ import { WorldBackdrop } from "@/components/world-backdrop";
 import { site } from "@/lib/site";
 import { NexovixConnectGtmNoscript, NexovixConnectTracking } from "../components/nexovix-connect-tracking";
 import { NexovixPerfHints } from "../components/nexovix-perf";
+import { NexovixDeferredThirdParties } from "../components/nexovix-perf-deferred";
 import "./globals.css";
 
 const heading = Fredoka({
@@ -99,6 +100,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteFooter />
         <MobileAppShell />
               <NexovixConnectTracking />
+              <NexovixDeferredThirdParties />
       </body>
     </html>
   );
