@@ -7,6 +7,11 @@ const noStore = [
 ];
 
 const nextConfig: NextConfig = {
+  // nexovix-perf
+  compress: true,
+  poweredByHeader: false,
+  images: { formats: ["image/avif", "image/webp"], minimumCacheTTL: 2592000 },
+
   // Serve /public images directly. Avoids broken _next/image placeholders
   // on some browsers, ad blockers, and protected preview hosts.
   images: {
