@@ -32,7 +32,6 @@ export const metadata: Metadata = {
     default: "Ringnest | Games on Roblox",
     template: "%s | Ringnest",
   },
-  description: site.description,
   applicationName: "Ringnest",
   appleWebApp: {
     capable: true,
@@ -67,8 +66,7 @@ export const metadata: Metadata = {
     siteName: "Ringnest",
     images: [{ url: "/brand/banner.jpg", width: 1280, height: 720, alt: "Ringnest" }],
     type: "website",
-  },
-};
+  }};
 
 export const viewport: Viewport = {
   themeColor: "#050814",
