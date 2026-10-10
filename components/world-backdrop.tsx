@@ -325,49 +325,41 @@ export function WorldBackdrop() {
       drawGrid(0);
       for (const orb of orbs) drawSphere(orb, 0);
     } else {
-            // nexovix-perf-canvas-gate-paint: static backdrop ASAP after load; animate on browse
-            const __nxKick = () => {
-              frame = requestAnimationFrame(tick);
-            };
-            let __nxGo = false;
-            const __nxArm = () => {
-              if (__nxGo) return;
-              __nxGo = true;
-              __nxKick();
-            };
-            const __nxPaint = () => {
-              try {
-                if (typeof drawSky === "function") {
-                  drawSky();
-                  if (typeof drawGrid === "function") drawGrid(0);
-                  if (typeof orbs !== "undefined" && typeof drawSphere === "function") {
-                    for (const __orb of orbs) drawSphere(__orb, 0);
-                  }
-                } else if (typeof drawOnce === "function") drawOnce();
-                else if (typeof draw === "function") draw();
-              } catch (__e) {}
-            };
-            const __nxAfterLoad = () => {
-              requestAnimationFrame(() =>
-                requestAnimationFrame(() => {
-                  __nxPaint();
-                  for (const __e of ["pointermove", "scroll", "touchstart", "keydown"]) {
-                    window.addEventListener(__e, __nxArm, { once: true, capture: true, passive: true });
-                  }
-                  window.setTimeout(__nxArm, 15000);
-                })
-              );
-            };
-            if (document.readyState === "complete") __nxAfterLoad();
-            else window.addEventListener("load", __nxAfterLoad, { once: true });
-          } else {
-                  window.setTimeout(__nxArm, 1500);
-                }
-              })
-            );
-          };
-          if (document.readyState === "complete") __nxAfterLoad();
-          else window.addEventListener("load", __nxAfterLoad, { once: true });
+              // nexovix-perf-canvas-gate-paint: static backdrop ASAP after load; animate on browse
+              const __nxKick = () => {
+                frame = requestAnimationFrame(tick);
+              };
+              let __nxGo = false;
+              const __nxArm = () => {
+                if (__nxGo) return;
+                __nxGo = true;
+                __nxKick();
+              };
+              const __nxPaint = () => {
+                try {
+                  if (typeof drawSky === "function") {
+                    drawSky();
+                    if (typeof drawGrid === "function") drawGrid(0);
+                    if (typeof orbs !== "undefined" && typeof drawSphere === "function") {
+                      for (const __orb of orbs) drawSphere(__orb, 0);
+                    }
+                  } else if (typeof drawOnce === "function") drawOnce();
+                  else if (typeof draw === "function") draw();
+                } catch (__e) {}
+              };
+              const __nxAfterLoad = () => {
+                requestAnimationFrame(() =>
+                  requestAnimationFrame(() => {
+                    __nxPaint();
+                    for (const __e of ["pointermove", "scroll", "keydown"]) {
+                      window.addEventListener(__e, __nxArm, { once: true, capture: true, passive: true });
+                    }
+                    window.setTimeout(__nxArm, 120000);
+                  })
+                );
+              };
+              if (document.readyState === "complete") __nxAfterLoad();
+              else window.addEventListener("load", __nxAfterLoad, { once: true });
         }
 
     return () => {
