@@ -46,19 +46,19 @@ export default function AboutPage() {
         <h2 className="font-heading text-2xl font-extrabold text-white">Play Pet Orbits</h2>
         <p className="mt-3 leading-relaxed text-white/90">
           Open Pet Orbits on Roblox, read the{" "}
-          <Link href="/games/pet-orbits" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
+          <Link prefetch={false} href="/games/pet-orbits" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
             full game landing
           </Link>
           , or browse every hatchable pet in the{" "}
-          <Link href="/catalog" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
+          <Link prefetch={false} href="/catalog" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
             Catalog
           </Link>
           . Optional{" "}
-          <Link href="/games/pet-orbits#shop" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
+          <Link prefetch={false} href="/games/pet-orbits#shop" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
             Nest Club
           </Link>{" "}
           is 199 Robux a month for extra coins, nest grace, and a Lucky Egg. New Ringnest games land on{" "}
-          <Link href="/games" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
+          <Link prefetch={false} href="/games" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
             Games
           </Link>{" "}
           when they go live.
@@ -69,7 +69,7 @@ export default function AboutPage() {
         <h2 className="font-heading text-2xl font-extrabold text-white">Discord</h2>
         <p className="mt-3 leading-relaxed text-white/90">
           The{" "}
-          <Link href="/discord" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
+          <Link prefetch={false} href="/discord" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
             Ringnest Discord
           </Link>{" "}
           is for updates, bug reports, finding people to play, and clips. Playing the game still
