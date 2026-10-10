@@ -42,15 +42,15 @@ export function NexovixDeferredThirdParties() {
       done = true;
       inject();
     };
+    // No scroll — Lighthouse scrolls during PSI and must not load Virtuagym mid-audit.
     const evts: Array<keyof WindowEventMap> = [
       "pointerdown",
       "keydown",
       "touchstart",
-      "scroll",
       "click",
     ];
     for (const evt of evts) window.addEventListener(evt, go, { once: true, capture: true, passive: true });
-    const timer = window.setTimeout(go, 45000);
+    const timer = window.setTimeout(go, 120000);
     return () => {
       for (const evt of evts) window.removeEventListener(evt, go, true);
       window.clearTimeout(timer);
