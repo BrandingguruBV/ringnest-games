@@ -69,7 +69,7 @@ export default async function GamePage({ params }: PageProps) {
             src={game.thumbnail}
             alt={`${game.title} artwork`}
             fill
-            priority
+           
             unoptimized
             className="object-cover"
             sizes="100vw"
