@@ -436,7 +436,26 @@ html { text-size-adjust: 100%; }
 button:focus-visible, a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 
 
-/* nexovix-perf-v8: fonts, media, contrast + reduced main-thread paint */
+
+@layer base {
+  img, video { max-width: 100%; height: auto; }
+}
+html { text-size-adjust: 100%; }
+@font-face { font-display: swap; }
+/* Bump common low-contrast accent utilities toward WCAG AA on dark heroes */
+.text-cyan-300, .text-cyan-400 { color: #a5f3fc !important; }
+.text-cyan-200 { color: #cffafe !important; }
+.text-sky-300, .text-sky-400 { color: #bae6fd !important; }
+.text-emerald-300, .text-teal-300 { color: #6ee7b7 !important; }
+.text-white\/50 { color: rgba(255, 255, 255, 0.72) !important; }
+.text-white\/60 { color: rgba(255, 255, 255, 0.78) !important; }
+.text-muted-foreground { color: inherit; opacity: 0.88; }
+/* Prefer content-visibility for long below-fold sections when authors opt in */
+[data-nexovix-cv], .nexovix-cv { content-visibility: auto; contain-intrinsic-size: 1px 720px; }
+button:focus-visible, a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+
+/* nexovix-perf-v9: fonts, media, contrast + reduced main-thread paint */
 @layer base {
   img, video { max-width: 100%; height: auto; }
 }
