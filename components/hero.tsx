@@ -28,7 +28,7 @@ export function Hero() {
               href={featured.playUrl}
               className="w-full sm:w-auto"
             />
-          <Link
+          <Link prefetch={false}
             href="/games/pet-orbits"
             className="inline-flex h-12 items-center justify-center rounded-2xl border border-white/20 bg-white/8 px-6 text-base font-extrabold text-white backdrop-blur hover:bg-white/14 sm:h-14"
           >
