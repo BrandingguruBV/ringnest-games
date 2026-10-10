@@ -90,7 +90,7 @@ export default function DiscordPage() {
         <h2 className="font-heading text-2xl font-extrabold text-white">Play first</h2>
         <p className="mt-3 leading-relaxed text-white/90">
           Discord does not replace the game. Open{" "}
-          <Link
+          <Link prefetch={false}
             href="/games/pet-orbits"
             className="font-bold text-cyan-200 underline-offset-4 hover:underline"
           >
