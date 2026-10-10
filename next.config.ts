@@ -7,10 +7,11 @@ const noStore = [
 ];
 
 const nextConfig: NextConfig = {
-  // nexovix-perf-v9
+  // nexovix-perf-v11
   compress: true,
   poweredByHeader: false,
   compiler: { removeConsole: process.env.NODE_ENV === "production" },
+
   experimental: { optimizePackageImports: ["lucide-react", "date-fns", "@radix-ui/react-icons", "react-icons"] },
 
 
