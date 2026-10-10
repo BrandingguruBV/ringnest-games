@@ -35,7 +35,7 @@ export function FeaturedGame({ game }: { game: Game }) {
         </p>
         <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <PlayOnRoblox href={game.playUrl} className="w-full sm:w-auto" />
-          <Link
+          <Link prefetch={false}
             href={`/games/${game.slug}`}
             className="inline-flex h-12 items-center justify-center rounded-2xl px-2 text-base font-extrabold text-white/90 underline-offset-4 hover:underline sm:h-14 sm:px-5"
           >
