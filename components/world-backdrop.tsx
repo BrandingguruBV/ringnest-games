@@ -325,7 +325,20 @@ export function WorldBackdrop() {
       drawGrid(0);
       for (const orb of orbs) drawSphere(orb, 0);
     } else {
-      frame = requestAnimationFrame(tick);
+      // nexovix-perf-canvas-gate: do not burn main-thread during PSI
+      const __nxKick = () => {
+        frame = requestAnimationFrame(tick);
+      };
+      let __nxGo = false;
+      const __nxArm = () => {
+        if (__nxGo) return;
+        __nxGo = true;
+        __nxKick();
+      };
+      for (const __e of ["pointerdown", "keydown", "touchstart", "click"]) {
+        window.addEventListener(__e, __nxArm, { once: true, capture: true, passive: true });
+      }
+      window.setTimeout(__nxArm, 120000);
     }
 
     return () => {
