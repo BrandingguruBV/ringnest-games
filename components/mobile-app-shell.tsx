@@ -174,7 +174,7 @@ export function MobileAppShell() {
                       const active = link.match(pathname, hash);
                       return (
                         <li key={link.href}>
-                          <Link
+                          <Link prefetch={false}
                             href={link.href}
                             onClick={() => setMoreOpen(false)}
                             className={cn(
@@ -264,7 +264,7 @@ export function MobileAppShell() {
             }
 
             return (
-              <Link
+              <Link prefetch={false}
                 key={tab.href}
                 href={tab.href!}
                 aria-label={tab.href === "/games/pet-orbits" ? "Pet Orbits" : undefined}
