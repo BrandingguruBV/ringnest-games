@@ -40,7 +40,7 @@ export function SiteHeader() {
             width={40}
             height={40}
             className="size-9 rounded-full ring-2 ring-cyan-300/70 sm:size-10"
-            priority
+           
             unoptimized
           />
           <span className="font-heading text-base font-extrabold tracking-[0.18em] text-white sm:text-xl">
