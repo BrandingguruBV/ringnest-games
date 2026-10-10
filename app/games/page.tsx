@@ -26,11 +26,11 @@ export default function GamesPage() {
       </h1>
       <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/90 sm:text-base">
         Pet Orbits is live. Meet every pet in the{" "}
-        <Link href="/catalog" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
+        <Link prefetch={false} href="/catalog" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
           Catalog
         </Link>
         . Talk, report bugs, and share clips on{" "}
-        <Link href="/discord" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
+        <Link prefetch={false} href="/discord" className="font-bold text-cyan-200 underline-offset-4 hover:underline">
           Discord
         </Link>
         .
@@ -59,7 +59,7 @@ export default function GamesPage() {
           </p>
           <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <PlayOnRoblox href={featured.playUrl} className="w-full sm:w-auto" />
-            <Link
+            <Link prefetch={false}
               href={`/games/${featured.slug}`}
               className="inline-flex h-12 items-center justify-center text-base font-bold text-white underline-offset-4 hover:underline sm:h-auto"
             >
@@ -87,7 +87,7 @@ export default function GamesPage() {
             </li>
           ))}
         </ul>
-        <Link
+        <Link prefetch={false}
           href="/games/pet-orbits"
           className="mt-6 inline-flex h-12 items-center rounded-2xl bg-white/10 px-5 text-sm font-extrabold text-white ring-1 ring-white/15 hover:bg-white/16"
         >
