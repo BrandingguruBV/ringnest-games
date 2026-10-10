@@ -40,7 +40,7 @@ export default function GamesPage() {
         <KeyArtHero
           src={featured.thumbnail}
           alt={`${featured.title} artwork`}
-          priority
+         
         >
           <Badge
             className={
