@@ -33,7 +33,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#050814]/88 pt-[env(safe-area-inset-top)] backdrop-blur-xl">
       <div className="mx-auto flex h-14 max-w-6xl items-center gap-3 px-4 sm:h-[4.25rem] sm:gap-4 sm:px-6">
-        <Link href="/" className="flex shrink-0 items-center gap-2.5">
+        <Link prefetch={false} href="/" className="flex shrink-0 items-center gap-2.5">
           <Image
             src="/brand/mark.jpg"
             alt="Ringnest"
@@ -51,7 +51,7 @@ export function SiteHeader() {
           {desktopNav.map((link) => {
             const active = link.match(pathname, hash);
             return (
-              <Link
+              <Link prefetch={false}
                 key={link.href}
                 href={link.href}
                 className={cn(
