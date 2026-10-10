@@ -25,7 +25,7 @@ export function WorldsGrid({
           </h2>
           <p className="mt-2 max-w-xl text-base text-white/88 sm:text-lg">{intro}</p>
         </div>
-        <Link
+        <Link prefetch={false}
           href="/games"
           className="text-sm font-bold text-cyan-200 underline-offset-4 hover:text-white hover:underline"
         >
