@@ -44,7 +44,7 @@ export function GameCard({ game }: { game: Game }) {
           playable && "shadow-[0_20px_60px_rgba(34,211,238,0.18)]",
         )}
       >
-        <Link href={`/games/${game.slug}`} className="relative block aspect-[16/10] overflow-hidden">
+        <Link prefetch={false} href={`/games/${game.slug}`} className="relative block aspect-[16/10] overflow-hidden">
           <Image
             src={game.thumbnail}
             alt={`${game.title} artwork`}
@@ -90,7 +90,7 @@ export function GameCard({ game }: { game: Game }) {
           </div>
           <div className="mt-auto flex flex-wrap items-center gap-3">
             <PlayOnRoblox href={game.playUrl} size="md" />
-            <Link
+            <Link prefetch={false}
               href={`/games/${game.slug}`}
               className="text-base font-bold text-cyan-200 underline-offset-4 hover:text-white hover:underline"
             >
