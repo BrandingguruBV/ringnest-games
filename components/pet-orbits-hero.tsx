@@ -16,7 +16,7 @@ export function PetOrbitsHero({
       <KeyArtHero
         src={thumbnail}
         alt="Pet Orbits key art"
-        priority
+       
         imageClassName="min-h-[200px] sm:min-h-[340px]"
       >
         <div className="flex flex-wrap gap-2">
