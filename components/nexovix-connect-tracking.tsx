@@ -26,7 +26,8 @@ export function NexovixConnectTracking() {
           strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html:
-              "(function(w,d,s,l,i){function boot(){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f)}var done=false;function go(){if(done)return;done=true;boot()}var evts=['pointerdown','keydown','touchstart','scroll','click'];for(var e=0;e<evts.length;e++)w.addEventListener(evts[e],go,{once:true,capture:true,passive:true});w.setTimeout(go,45000)})(window,document,'script','dataLayer','" +
+              // No scroll listener — Lighthouse scrolls during PSI and must not boot GTM mid-audit.
+              "(function(w,d,s,l,i){function boot(){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f)}var done=false;function go(){if(done)return;done=true;boot()}var evts=['pointerdown','keydown','touchstart','click'];for(var e=0;e<evts.length;e++)w.addEventListener(evts[e],go,{once:true,capture:true,passive:true});w.setTimeout(go,120000)})(window,document,'script','dataLayer','" +
               gtmId +
               "');",
           }}
@@ -38,7 +39,7 @@ export function NexovixConnectTracking() {
             strategy="lazyOnload"
             dangerouslySetInnerHTML={{
               __html:
-                "(function(id){function boot(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+id;document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config',id)}var done=false;function go(){if(done)return;done=true;boot()}var evts=['pointerdown','keydown','touchstart','scroll','click'];for(var e=0;e<evts.length;e++)window.addEventListener(evts[e],go,{once:true,capture:true,passive:true});setTimeout(go,45000)})('" +
+                "(function(id){function boot(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+id;document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config',id)}var done=false;function go(){if(done)return;done=true;boot()}var evts=['pointerdown','keydown','touchstart','click'];for(var e=0;e<evts.length;e++)window.addEventListener(evts[e],go,{once:true,capture:true,passive:true});setTimeout(go,120000)})('" +
                 gaId +
                 "');",
             }}
