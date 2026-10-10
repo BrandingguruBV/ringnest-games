@@ -59,7 +59,7 @@ export function NestClubBand({ className }: { className?: string }) {
                 </a>
               </Button>
               <PlayOnRoblox href={featuredGame().playUrl} />
-              <Link
+              <Link prefetch={false}
                 href="/games/pet-orbits#shop"
                 className="inline-flex h-14 items-center justify-center rounded-2xl px-5 text-base font-extrabold text-white/90 underline-offset-4 hover:underline"
               >
