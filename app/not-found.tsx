@@ -8,7 +8,7 @@ export default function NotFound() {
       <p className="mt-3 text-white/88">
         Head back to Games or the pet Catalog.
       </p>
-      <Link
+      <Link prefetch={false}
         href="/games"
         className="mt-6 inline-flex h-12 items-center rounded-2xl bg-[#00e38c] px-5 font-extrabold text-[#052013]"
       >
