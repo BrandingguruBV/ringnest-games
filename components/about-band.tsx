@@ -33,19 +33,19 @@ export function AboutBand() {
           </div>
         </dl>
         <div className="mt-8 flex flex-wrap gap-4">
-          <Link
+          <Link prefetch={false}
             href="/games/pet-orbits"
             className="inline-flex h-12 items-center rounded-2xl bg-white/10 px-5 text-sm font-extrabold text-white ring-1 ring-white/15 hover:bg-white/16"
           >
             Inside Pet Orbits
           </Link>
-          <Link
+          <Link prefetch={false}
             href="/about"
             className="inline-flex h-12 items-center rounded-2xl bg-white/10 px-5 text-sm font-extrabold text-white ring-1 ring-white/15 hover:bg-white/16"
           >
             About Ringnest
           </Link>
-          <Link
+          <Link prefetch={false}
             href="/discord"
             className="inline-flex h-12 items-center rounded-2xl bg-white/10 px-5 text-sm font-extrabold text-white ring-1 ring-white/15 hover:bg-white/16"
           >
