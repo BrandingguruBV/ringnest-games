@@ -34,7 +34,7 @@ export function SiteFooter() {
         </div>
         <div className="flex flex-wrap gap-4 text-sm font-semibold text-white/90">
           {footerNav.map((link) => (
-            <Link key={link.href} href={link.href} className="hover:text-white">
+            <Link prefetch={false} key={link.href} href={link.href} className="hover:text-white">
               {link.label}
             </Link>
           ))}
