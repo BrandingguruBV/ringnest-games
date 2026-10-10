@@ -33,7 +33,7 @@ export function PetCatalog() {
       </p>
       <p className="mt-4 max-w-2xl text-base text-white/88">
         Want the crash loop, 12 nests, Nest Club, 12 passes, and 14 packs first?{" "}
-        <Link
+        <Link prefetch={false}
           href="/games/pet-orbits"
           className="font-bold text-cyan-200 underline-offset-4 hover:text-white hover:underline"
         >
