@@ -7,10 +7,11 @@ const noStore = [
 ];
 
 const nextConfig: NextConfig = {
-  // nexovix-perf-v6
+  // nexovix-perf-v7
   compress: true,
   poweredByHeader: false,
   compiler: { removeConsole: process.env.NODE_ENV === "production" },
+
 
 
   // Serve /public images directly. Avoids broken _next/image placeholders
