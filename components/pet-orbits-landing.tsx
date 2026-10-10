@@ -99,7 +99,7 @@ export function PetOrbitsLanding({
 
   return (
     <article className="relative mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
-      <Link
+      <Link prefetch={false}
         href="/games"
         className="text-sm font-bold text-cyan-200 underline-offset-4 hover:text-white hover:underline"
       >
@@ -379,7 +379,7 @@ export function PetOrbitsLanding({
             </ul>
           </div>
         </div>
-        <Link
+        <Link prefetch={false}
           href="/catalog"
           className="mt-6 inline-flex h-12 items-center rounded-2xl bg-white/10 px-5 text-sm font-extrabold text-white ring-1 ring-white/15 hover:bg-white/16"
         >
@@ -596,13 +596,13 @@ export function PetOrbitsLanding({
               Subscribe Nest Club
             </a>
           </Button>
-          <Link
+          <Link prefetch={false}
             href="/catalog"
             className="inline-flex h-14 items-center justify-center rounded-2xl px-5 text-base font-extrabold text-white underline-offset-4 hover:underline"
           >
             Browse 162 pets
           </Link>
-          <Link
+          <Link prefetch={false}
             href="/discord"
             className="inline-flex h-14 items-center justify-center rounded-2xl px-5 text-base font-extrabold text-white underline-offset-4 hover:underline"
           >
