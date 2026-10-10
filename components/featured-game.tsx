@@ -10,7 +10,7 @@ export function FeaturedGame({ game }: { game: Game }) {
       <KeyArtHero
         src={game.thumbnail}
         alt={`${game.title} key art`}
-        priority
+       
         className="shadow-[0_30px_80px_rgba(34,211,238,0.16)]"
       >
         <div className="flex flex-wrap items-center gap-2">
