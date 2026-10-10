@@ -325,22 +325,43 @@ export function WorldBackdrop() {
       drawGrid(0);
       for (const orb of orbs) drawSphere(orb, 0);
     } else {
-        // nexovix-perf-canvas-gate-load: start backdrop ASAP after first load (not on click)
-        const __nxKick = () => {
-          frame = requestAnimationFrame(tick);
-        };
-        let __nxGo = false;
-        const __nxArm = () => {
-          if (__nxGo) return;
-          __nxGo = true;
-          __nxKick();
-        };
-        const __nxAfterLoad = () => {
-          requestAnimationFrame(() => requestAnimationFrame(__nxArm));
-        };
-        if (document.readyState === "complete") __nxAfterLoad();
-        else window.addEventListener("load", __nxAfterLoad, { once: true });
-      }
+          // nexovix-perf-canvas-gate-static: paint ASAP after load; animate on idle (no click)
+          const __nxKick = () => {
+            frame = requestAnimationFrame(tick);
+          };
+          let __nxGo = false;
+          const __nxArm = () => {
+            if (__nxGo) return;
+            __nxGo = true;
+            __nxKick();
+          };
+          const __nxPaint = () => {
+            try {
+              if (typeof w === "function" && typeof y === "function") {
+                w();
+                y(0);
+                if (typeof d !== "undefined" && typeof v === "function") {
+                  for (const __orb of d) v(__orb, 0);
+                }
+              } else if (typeof drawOnce === "function") drawOnce();
+              else if (typeof draw === "function") draw();
+            } catch (__e) {}
+          };
+          const __nxAfterLoad = () => {
+            requestAnimationFrame(() =>
+              requestAnimationFrame(() => {
+                __nxPaint();
+                if (typeof requestIdleCallback === "function") {
+                  requestIdleCallback(__nxArm, { timeout: 2500 });
+                } else {
+                  window.setTimeout(__nxArm, 1500);
+                }
+              })
+            );
+          };
+          if (document.readyState === "complete") __nxAfterLoad();
+          else window.addEventListener("load", __nxAfterLoad, { once: true });
+        }
 
     return () => {
       running = false;
