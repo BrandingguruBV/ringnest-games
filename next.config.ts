@@ -7,10 +7,11 @@ const noStore = [
 ];
 
 const nextConfig: NextConfig = {
-  // nexovix-perf-v7
+  // nexovix-perf-v8
   compress: true,
   poweredByHeader: false,
   compiler: { removeConsole: process.env.NODE_ENV === "production" },
+
 
 
 
