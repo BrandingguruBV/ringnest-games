@@ -56,7 +56,7 @@ export default async function GamePage({ params }: PageProps) {
 
   return (
     <article className="relative mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-16">
-      <Link
+      <Link prefetch={false}
         href="/games"
         className="text-sm font-bold text-cyan-200 underline-offset-4 hover:text-white hover:underline"
       >
